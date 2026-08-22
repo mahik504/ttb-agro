@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="forestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B432E" />
+      <stop offset="100%" stop-color="#0B1E15" />
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E" />
+      <stop offset="100%" stop-color="#16A34A" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+  <!-- Background Shield -->
+  <rect width="48" height="48" rx="12" fill="url(#forestGrad)" />
+  <!-- Supply Chain Connected Lines -->
+  <path d="M12 34 L24 22 L36 34" stroke="#5FA886" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.4" />
+  <circle cx="12" cy="34" r="3" fill="#94C7AF" />
+  <circle cx="36" cy="34" r="3" fill="#94C7AF" />
+  <circle cx="24" cy="22" r="3.5" fill="url(#amberGrad)" />
+  <!-- Stylized Agricultural Sprout -->
+  <path d="M24 22 C24 14 17 12 17 12 C17 12 16 19 24 22 Z" fill="url(#leafGrad)" />
+  <path d="M24 22 C24 15 31 13 31 13 C31 13 32 20 24 22 Z" fill="#4ADE80" opacity="0.9" />
+</svg>
