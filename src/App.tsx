@@ -15,9 +15,8 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { DisclaimerPage } from './pages/DisclaimerPage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { Sparkles } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 
-// Scroll to top helper on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -34,15 +33,15 @@ export function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-[#FAFBF9] text-gray-900 selection:bg-agri-600 selection:text-white">
+      <div className="flex flex-col min-h-screen bg-[#F4EFE4] text-[#0E1C14] selection:bg-[#1A3C2C] selection:text-[#FBF7EE]">
         
-        {/* Main Sticky Navigation */}
-        <Navbar onOpenAssistant={() => setIsAssistantOpen(true)} />
+        {/* Main Navigation */}
+        <Navbar />
 
         {/* Content Viewport */}
         <main className="flex-1">
           <Routes>
-            <Route path="/" element={<HomePage onOpenAssistant={() => setIsAssistantOpen(true)} />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/commodities" element={<CommoditiesPage />} />
             <Route path="/supply-chain" element={<SupplyChainPage />} />
@@ -57,26 +56,22 @@ export function App() {
           </Routes>
         </main>
 
-        {/* Corporate Footer */}
+        {/* Footer */}
         <Footer />
 
-        {/* Floating Quick Action Button for B2B Assistant */}
-        <div className="fixed bottom-6 right-6 z-30">
+        {/* Quiet FAB for Assistant */}
+        <div className="fixed bottom-5 right-5 z-30">
           <button
             onClick={() => setIsAssistantOpen(true)}
-            className="flex items-center gap-2 px-4 py-3 bg-forest-950 hover:bg-forest-900 text-white rounded-full shadow-2xl border border-forest-700 hover:border-agri-400 transition-all duration-200 btn-tactile group"
-            aria-label="Open B2B Procurement Assistant"
+            className="flex items-center gap-2 px-3.5 py-2 bg-[#1A3C2C] hover:bg-[#133022] text-[#FBF7EE] rounded shadow-elevated border border-[#C4A35A]/40 transition-colors btn-tactile group text-xs font-medium"
+            aria-label="Ask TTB Agro Assistant"
           >
-            <div className="w-6 h-6 rounded-full bg-agri-600 flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform">
-              <Sparkles className="w-3.5 h-3.5 text-amberGold-300" />
-            </div>
-            <span className="text-xs font-bold font-display text-gray-100 pr-1 hidden sm:inline">
-              B2B Agri Assistant
-            </span>
+            <MessageSquare className="w-3.5 h-3.5 text-[#C4A35A]" />
+            <span>Ask TTB</span>
           </button>
         </div>
 
-        {/* Domain-Locked B2B Agri Assistant Modal */}
+        {/* Assistant Modal */}
         <AgriAssistantModal
           isOpen={isAssistantOpen}
           onClose={() => setIsAssistantOpen(false)}

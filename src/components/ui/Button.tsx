@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'amber';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   isExternal?: boolean;
@@ -25,20 +25,19 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg btn-tactile transition-colors duration-150 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed select-none';
+  const baseStyles = 'inline-flex items-center justify-center font-medium rounded btn-tactile transition-colors duration-150 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed select-none tracking-normal';
 
   const sizeStyles = {
-    sm: 'px-3.5 py-1.5 text-xs gap-1.5',
-    md: 'px-5 py-2.5 text-sm gap-2',
-    lg: 'px-7 py-3.5 text-base gap-2.5 font-semibold',
+    sm: 'px-3.5 py-1.5 text-xs gap-1.5 font-medium',
+    md: 'px-4 py-2 text-sm gap-2 font-medium',
+    lg: 'px-6 py-3 text-sm sm:text-base gap-2.5 font-medium',
   };
 
   const variantStyles = {
-    primary: 'bg-forest-800 hover:bg-forest-900 text-white shadow-sm border border-forest-700 active:bg-forest-950',
-    secondary: 'bg-agri-600 hover:bg-agri-700 text-white shadow-sm border border-agri-500',
-    amber: 'bg-amberGold-600 hover:bg-amberGold-700 text-white shadow-sm border border-amberGold-500',
-    outline: 'bg-white hover:bg-forest-50 text-forest-900 border border-forest-300 shadow-subtle',
-    ghost: 'bg-transparent hover:bg-forest-50 text-forest-800 border-transparent',
+    primary: 'bg-[#1A3C2C] hover:bg-[#133022] text-[#FBF7EE] border border-[#C4A35A]/40 shadow-xs active:bg-[#0B1E15]',
+    secondary: 'bg-[#FBF7EE] hover:bg-[#EAE4D5] text-[#0E1C14] border border-[#0E1C14]/15 shadow-xs',
+    outline: 'bg-transparent hover:bg-[#1A3C2C]/10 text-[#0E1C14] border border-[#0E1C14]/25',
+    ghost: 'bg-transparent hover:bg-[#0E1C14]/5 text-[#0E1C14] border-transparent',
   };
 
   const combinedClasses = twMerge(clsx(baseStyles, sizeStyles[size], variantStyles[variant], className));

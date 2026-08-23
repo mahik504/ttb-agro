@@ -4,13 +4,11 @@ import { companyInfo } from '../data/company';
 
 export const PrivacyPolicyPage: React.FC = () => {
   return (
-    <div className="bg-[#FAFBF9] min-h-screen pb-20">
+    <div className="bg-[#F4EFE4] min-h-screen pb-20">
       <PageHeader
-        badgeText="LEGAL & PRIVACY"
-        badgeVariant="neutral"
-        title="Privacy Policy &"
-        highlightText="Commercial Data Protection."
-        description={`How ${companyInfo.legalName} collects, protects, and handles commercial procurement data and RFP communications.`}
+        badgeText="LEGAL & DATA GOVERNANCE"
+        title="Privacy Policy"
+        description="How TTB Agro India Private Limited handles commercial procurement inquiries and contact information."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Privacy Policy' }
@@ -18,48 +16,40 @@ export const PrivacyPolicyPage: React.FC = () => {
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
-        <div className="bg-white p-8 sm:p-12 rounded-2xl border border-gray-200 shadow-subtle space-y-8 text-xs sm:text-sm text-gray-700 leading-relaxed">
+        <div className="p-8 sm:p-10 rounded bg-[#FBF7EE] border border-[#0E1C14]/10 space-y-8 text-sm text-[#3D4A42] leading-relaxed">
           
-          <section className="space-y-3">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 font-display">1. Information We Collect</h2>
+          <div className="space-y-2">
+            <h2 className="text-xl font-display font-medium text-[#0E1C14]">1. Information Collection & Usage</h2>
             <p>
-              {companyInfo.legalName} collects information submitted voluntarily by commercial entities, prospective institutional retail partners, hotel chains, and grower collectives through our online Request for Proposal (RFP) engine, official email communications, and business inquiry forms.
+              When you submit a procurement requirement or RFP through our website, we collect your name, business email, phone number, company name, and specific commodity volume requirements. This information is utilized solely for commercial communication, volume allocation, and issuing formal supply quotes.
             </p>
-            <p>
-              This includes organizational name, contact person details, business email, phone number, designated buyer category, commodity procurement volumes, and delivery logistics requirements.
-            </p>
-          </section>
+          </div>
 
-          <section className="space-y-3">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 font-display">2. Commercial Use of Information</h2>
-            <p>Collected information is used exclusively for:</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Generating customized volume quotations and commercial supply SLAs.</li>
-              <li>Coordinating cold-chain logistics schedules and farm-gate aggregation planning.</li>
-              <li>Issuing statutory tax invoices (GSTIN) and compliance documentation.</li>
-              <li>Direct business correspondence regarding commodity pricing and seasonal arrivals.</li>
-            </ul>
-            <p>We do not sell, lease, or monetize commercial inquiry data to third-party marketing entities.</p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 font-display">3. Data Security & Retention</h2>
+          <div className="space-y-2">
+            <h2 className="text-xl font-display font-medium text-[#0E1C14]">2. Communications & Commercial Storage</h2>
             <p>
-              We implement industry-standard administrative, technical, and physical safeguards to protect commercial procurement data. Inquiries and contractual data are stored in secured corporate databases accessible only by authorized supply-chain personnel.
+              Inquiry submissions are delivered directly to our commercial procurement desk email ({companyInfo.contact.officialEmail}) and stored securely within our corporate email inboxes. We do not sell, rent, or lease commercial inquiry data to any third-party marketing brokers.
             </p>
-          </section>
+          </div>
 
-          <section className="space-y-3">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 font-display">4. Contacting Our Data Desk</h2>
+          <div className="space-y-2">
+            <h2 className="text-xl font-display font-medium text-[#0E1C14]">3. Data Sharing & Affiliates</h2>
             <p>
-              For questions regarding our privacy practices or to request removal of your commercial contact records, please write to our compliance desk:
+              Where relevant to fulfilling your procurement scope (such as specialized coconut processing via SP Coconut or freight coordination), details may be coordinated with group sister entities for logistical and processing execution.
             </p>
-            <div className="p-4 bg-sand-50 rounded-xl border border-sand-200 font-mono text-xs">
-              <div><strong>Entity:</strong> {companyInfo.legalName}</div>
-              <div><strong>Email:</strong> {companyInfo.contact.officialEmail}</div>
-              <div><strong>Operations Hub:</strong> {companyInfo.registeredOffice.fullAddress}</div>
+          </div>
+
+          <div className="space-y-2">
+            <h2 className="text-xl font-display font-medium text-[#0E1C14]">4. Contact Regarding Data</h2>
+            <p>
+              For inquiries regarding your commercial contact records, write to:
+            </p>
+            <div className="p-3 bg-[#F4EFE4] rounded border border-[#0E1C14]/10 text-xs font-mono text-[#0E1C14]">
+              {companyInfo.legalName}<br />
+              {companyInfo.registeredOffice.fullAddress}<br />
+              Email: {companyInfo.contact.officialEmail}
             </div>
-          </section>
+          </div>
 
         </div>
       </div>

@@ -1,139 +1,118 @@
 import React from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
-import { Badge } from '../components/ui/Badge';
+import { SectionHeading } from '../components/ui/SectionHeading';
 import { Button } from '../components/ui/Button';
 import { supplyChainStages } from '../data/network';
-import { ShieldCheck, CheckCircle2, Factory } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const SupplyChainPage: React.FC = () => {
   return (
-    <div className="bg-[#FAFBF9] min-h-screen pb-20">
+    <div className="bg-[#F4EFE4] min-h-screen pb-20">
       {/* Page Header */}
       <PageHeader
-        badgeText="END-TO-END AGRI-LOGISTICS"
-        badgeVariant="green"
-        title="Resilient Supply Chain Architecture:"
-        highlightText="From Origin to Retail."
-        description="How TTB Agro synchronizes multi-state farm aggregations, counter-seasonal Eurasian import channels, dual-stage testing gates, and SLA-governed dispatch to guarantee institutional continuity."
+        badgeText="END-TO-END SUPPLY CHAIN"
+        title="From Origin Growers to"
+        highlightText="Organised Retail Handover."
+        description="A four-stage operational journey combining regional grower aggregation, dedicated Eurasian import channels, dual-stage QC, and dependable last-mile delivery."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Our Supply Chain' }
         ]}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 space-y-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
         
-        {/* 4 Stages Detailed Section */}
-        <div className="space-y-12">
-          {supplyChainStages.map((stage, idx) => {
-            const isEven = idx % 2 === 1;
-            return (
+        {/* Section 1: The 4 Stages (Slide 8) */}
+        <div id="journey" className="space-y-8">
+          <SectionHeading
+            badgeText="OPERATIONAL WORKFLOW"
+            title="The Four Sourcing & Delivery Stages"
+            description="Our origin-to-retail workflow is engineered to eliminate supply chain disruptions and maintain consistent quality across harvest cycles."
+            align="left"
+          />
+
+          <div className="space-y-6">
+            {supplyChainStages.map((stage) => (
               <div
                 key={stage.step}
-                className="bg-white rounded-3xl p-8 sm:p-10 lg:p-12 border border-gray-200 shadow-subtle grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+                className="p-6 sm:p-8 rounded bg-[#FBF7EE] border border-[#0E1C14]/10 space-y-5"
               >
-                {/* Content Column */}
-                <div className={`lg:col-span-7 space-y-5 ${isEven ? 'lg:order-2' : ''}`}>
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#0E1C14]/10 pb-4">
                   <div className="flex items-center gap-3">
-                    <span className="w-10 h-10 rounded-xl bg-forest-900 text-white font-mono font-bold text-sm flex items-center justify-center">
+                    <span className="w-9 h-9 rounded bg-[#0B1E15] text-[#C4A35A] font-mono font-bold text-xs flex items-center justify-center border border-[#C4A35A]/30">
                       {stage.step}
                     </span>
-                    <Badge variant="green" size="md">
-                      {stage.subtitle}
-                    </Badge>
-                  </div>
-
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-forest-950 font-display">
-                    {stage.title}
-                  </h3>
-
-                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                    {stage.description}
-                  </p>
-
-                  <div className="space-y-2.5 pt-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-forest-900 block">
-                      Core Operations:
-                    </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                      {stage.tacticalOperations.map((op, oIdx) => (
-                        <div key={oIdx} className="flex items-start gap-2 text-xs text-gray-700 p-2.5 rounded-lg bg-sand-50 border border-sand-200">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-agri-600 shrink-0 mt-0.5" />
-                          <span>{op}</span>
-                        </div>
-                      ))}
+                    <div>
+                      <h3 className="text-xl font-display font-medium text-[#0E1C14]">
+                        {stage.title}
+                      </h3>
+                      <p className="text-xs font-mono text-[#8C7033] mt-0.5">
+                        {stage.subtitle}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Quality Gate Checkpoint */}
-                  <div className="p-3.5 rounded-xl bg-forest-900 text-white flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-agri-400 shrink-0" />
-                      <span className="font-semibold">{stage.qcGate}</span>
-                    </div>
-                    <span className="text-[10px] uppercase font-mono text-agri-300 font-bold bg-forest-800 px-2 py-0.5 rounded">
-                      Audited
-                    </span>
-                  </div>
+                  <span className="px-3 py-1 rounded bg-[#1A3C2C]/10 text-[#1A3C2C] border border-[#1A3C2C]/20 text-xs font-mono">
+                    {stage.qcGate}
+                  </span>
                 </div>
 
-                {/* Visual / Strategic Context Box */}
-                <div className={`lg:col-span-5 ${isEven ? 'lg:order-1' : ''}`}>
-                  <div className="bg-sand-50 rounded-2xl p-6 sm:p-8 border border-sand-300/80 space-y-4">
-                    <span className="text-[10px] uppercase font-bold text-gray-500 tracking-wider block font-mono">
-                      SUPPLY-CHAIN INTEGRITY
-                    </span>
-                    <h4 className="text-lg font-bold text-forest-900 font-display">
-                      Why This Matters for Corporate Buyers
-                    </h4>
-                    <p className="text-xs text-gray-600 leading-relaxed">
-                      {idx === 0 && 'Direct origin ties prevent speculative mandi price inflation and establish traceability down to regional farmer clusters.'}
-                      {idx === 1 && 'Import supplementation from Iran and Turkey ensures hypermarkets maintain apple shelf presence without extreme seasonal price surges.'}
-                      {idx === 2 && 'Dual-stage inspection filters out non-compliant produce before it enters customer logistics bays, driving rejections below 0.5%.'}
-                      {idx === 3 && 'Early-morning temperature-controlled deliveries ensure kitchen readiness for QSR networks and on-time stock-in for supermarkets.'}
-                    </p>
-                    <div className="p-3 bg-white rounded-xl border border-sand-200 text-xs font-mono text-agri-800 font-bold">
-                      SLA Fill Rate Guarantee: Continuous 365 Days
+                <p className="text-sm text-[#3D4A42] leading-relaxed max-w-3xl">
+                  {stage.description}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                  {stage.tacticalOperations.map((op, idx) => (
+                    <div key={idx} className="p-3 rounded bg-[#F4EFE4] border border-[#0E1C14]/10 text-xs text-[#3D4A42] flex items-start gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#1A3C2C] shrink-0 mt-0.5" />
+                      <span>{op}</span>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
 
-        {/* Processing & Zero-Waste Feature via SP Coconut */}
-        <div className="bg-forest-950 text-white rounded-3xl p-8 sm:p-12 border border-forest-800 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8 space-y-4">
-            <div className="flex items-center gap-2">
-              <Factory className="w-5 h-5 text-amberGold-400" />
-              <Badge variant="amber" size="sm">VALUE-ADDITION & PROCESSING</Badge>
+        {/* Section 2: SP Coconut Processing Synergy (Slide 4) */}
+        <div id="processing" className="p-6 sm:p-8 rounded bg-[#0B1E15] text-[#FBF7EE] border border-[#C4A35A]/20 space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#C4A35A]/20 pb-4">
+            <div>
+              <span className="text-[10px] font-mono uppercase font-bold text-[#C4A35A] tracking-widest block">
+                PROCESSING & VALUE-ADD ECOSYSTEM (SLIDE 4)
+              </span>
+              <h3 className="text-xl sm:text-2xl font-display font-medium text-[#FBF7EE] mt-0.5">
+                SP Coconut: Dedicated Processing Unit (₹80 Cr)
+              </h3>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">
-              Industrial Coconut Processing via SP Coconut (₹80 Cr Unit)
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-              Beyond standard commodity trading, the group operates SP Coconut—a dedicated high-volume processing facility in Southern India. This facility delivers culinary coconuts, desiccated powder, copra, and upcycled coir by-products with a strict zero-waste philosophy.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
-              <div className="p-3 rounded-lg bg-forest-900 border border-forest-800">
-                <strong className="text-amberGold-400 block font-mono">100,000+ Nuts</strong>
-                <span className="text-gray-300 text-[11px]">Daily sorting & grading capacity</span>
-              </div>
-              <div className="p-3 rounded-lg bg-forest-900 border border-forest-800">
-                <strong className="text-agri-400 block font-mono">Zero Waste</strong>
-                <span className="text-gray-300 text-[11px]">Husk to coir & shell to bio-carbon</span>
-              </div>
-              <div className="p-3 rounded-lg bg-forest-900 border border-forest-800">
-                <strong className="text-white block font-mono">Institutional Specs</strong>
-                <span className="text-gray-300 text-[11px]">Uniform meat thickness for QSRs</span>
-              </div>
+            <span className="text-xs font-mono text-[#C4A35A] bg-[#1A3C2C] px-3 py-1 rounded border border-[#C4A35A]/30">
+              Zero-Waste Philosophy
+            </span>
+          </div>
+
+          <p className="text-sm text-[#EAE4D5]/80 leading-relaxed max-w-3xl">
+            In synergy with SP Coconut, our group operates a dedicated unit for processing fresh coconuts into value-added formats, ensuring zero waste and higher market margins while delivering stable culinary coconut supplies to regional retail and Udupi hospitality networks.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs">
+            <div className="p-4 rounded bg-[#1A3C2C]/30 border border-[#C4A35A]/20 space-y-1.5">
+              <strong className="block text-[#C4A35A] font-mono">Culinary Fresh Supply</strong>
+              <p className="text-[#EAE4D5]/70">Graded fresh whole coconuts for retail supermarket shelves and commercial kitchens.</p>
+            </div>
+            <div className="p-4 rounded bg-[#1A3C2C]/30 border border-[#C4A35A]/20 space-y-1.5">
+              <strong className="block text-[#C4A35A] font-mono">Value-Added Formats</strong>
+              <p className="text-[#EAE4D5]/70">Processed coconut copra, desiccated formats, and food-service supplies.</p>
+            </div>
+            <div className="p-4 rounded bg-[#1A3C2C]/30 border border-[#C4A35A]/20 space-y-1.5">
+              <strong className="block text-[#C4A35A] font-mono">Zero-Waste Recovery</strong>
+              <p className="text-[#EAE4D5]/70">Coir fiber and secondary byproduct utilization driving eco-friendly sustainability.</p>
             </div>
           </div>
 
-          <div className="lg:col-span-4 text-center lg:text-right">
-            <Button href="/contact" variant="amber" size="lg">
-              Inquire for Processed Formats
+          <div className="pt-4 border-t border-[#C4A35A]/15 flex items-center justify-between">
+            <span className="text-xs text-[#EAE4D5]/60 font-mono">Pollachi & Karnataka sourcing corridors</span>
+            <Button href="/contact" variant="primary" size="sm" icon={<ArrowRight className="w-3.5 h-3.5" />}>
+              Inquire About Coconut Sourcing
             </Button>
           </div>
         </div>

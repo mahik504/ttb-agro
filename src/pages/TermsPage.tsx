@@ -4,13 +4,11 @@ import { companyInfo } from '../data/company';
 
 export const TermsPage: React.FC = () => {
   return (
-    <div className="bg-[#FAFBF9] min-h-screen pb-20">
+    <div className="bg-[#F4EFE4] min-h-screen pb-20">
       <PageHeader
-        badgeText="COMMERCIAL TERMS"
-        badgeVariant="neutral"
-        title="Terms of Supply &"
-        highlightText="Commercial Engagement."
-        description={`General commercial engagement guidelines and procurement terms governing supply transactions with ${companyInfo.legalName}.`}
+        badgeText="COMMERCIAL FRAMEWORK"
+        title="Terms of Supply & Trade"
+        description="Standard operating principles governing B2B agricultural trading, contracts, and delivery agreements."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Terms of Supply' }
@@ -18,38 +16,35 @@ export const TermsPage: React.FC = () => {
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
-        <div className="bg-white p-8 sm:p-12 rounded-2xl border border-gray-200 shadow-subtle space-y-8 text-xs sm:text-sm text-gray-700 leading-relaxed">
+        <div className="p-8 sm:p-10 rounded bg-[#FBF7EE] border border-[#0E1C14]/10 space-y-8 text-sm text-[#3D4A42] leading-relaxed">
           
-          <section className="space-y-3">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 font-display">1. Commercial Sourcing Agreement</h2>
+          <div className="space-y-2">
+            <h2 className="text-xl font-display font-medium text-[#0E1C14]">1. Commercial Scope</h2>
             <p>
-              All agricultural commodity supplies, fresh produce deliveries, and institutional contracts executed by {companyInfo.legalName} ("the Supplier") are governed by formal bilateral purchase agreements, Purchase Orders (PO), and service level agreements (SLAs) executed with the institutional buyer.
+              This website serves as a B2B informational and procurement inquiry interface for {companyInfo.legalName}. Information provided does not constitute an open unilateral offer to sell; all commercial supply agreements are finalized upon mutually executed Purchase Orders (POs) and formal commercial contracts.
             </p>
-          </section>
+          </div>
 
-          <section className="space-y-3">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 font-display">2. Quality Control & Intake Protocols</h2>
+          <div className="space-y-2">
+            <h2 className="text-xl font-display font-medium text-[#0E1C14]">2. Quality & Specifications</h2>
             <p>
-              Produce quality is governed by Dual-Stage QC screening prior to client dispatch. Buyer intake inspections must be performed at the receiving dock in accordance with mutually agreed parameter sheets (Brix sweetness, caliber, moisture content, skin defect tolerances).
+              Agricultural commodities are subject to natural seasonal and climatic variations. Precise grade parameters, sizing, packaging formats, and delivery terms are established and confirmed on each formal order confirmation.
             </p>
-            <p>
-              Any variance or discrepancy must be logged on the electronic Proof of Delivery (e-POD) within designated window hours of consignment arrival.
-            </p>
-          </section>
+          </div>
 
-          <section className="space-y-3">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 font-display">3. Delivery & Cold-Chain Logistics</h2>
+          <div className="space-y-2">
+            <h2 className="text-xl font-display font-medium text-[#0E1C14]">3. Dual-Stage Quality Control</h2>
             <p>
-              Consignments requiring cold-chain preservation (e.g. Apples and Bananas) are transported in temperature-monitored reefer vehicles. The Supplier maintains continuous data logging until physical dock handover at the destination warehouse.
+              Consignments are inspected at the initial procurement stage at the origin and verified at final dispatch from our central operations hub prior to customer handover.
             </p>
-          </section>
+          </div>
 
-          <section className="space-y-3">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 font-display">4. Force Majeure & Agri-Seasonal Factors</h2>
+          <div className="space-y-2">
+            <h2 className="text-xl font-display font-medium text-[#0E1C14]">4. Jurisdiction</h2>
             <p>
-              While TTB Agro employs multi-origin sourcing and counter-seasonal global imports to safeguard supply continuity, extreme climate events, statutory border closures, or maritime freight disruptions are subject to standard agricultural force majeure provisions.
+              All commercial trading contracts are governed by and construed in accordance with the laws of India, subject to the jurisdiction of courts in Navi Mumbai / Mumbai, Maharashtra.
             </p>
-          </section>
+          </div>
 
         </div>
       </div>

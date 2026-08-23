@@ -1,43 +1,39 @@
 import React from 'react';
 import { HeroSection } from '../components/home/HeroSection';
 import { SupplyChainVisualizer } from '../components/home/SupplyChainVisualizer';
+import { SourcingMatrixPreview } from '../components/home/SourcingMatrixPreview';
 import { SeasonalDeriskingSection } from '../components/home/SeasonalDeriskingSection';
 import { NetworkMapSection } from '../components/home/NetworkMapSection';
-import { SourcingMatrixPreview } from '../components/home/SourcingMatrixPreview';
 import { GroupEcosystemSection } from '../components/home/GroupEcosystemSection';
 import { ValuePillarsSection } from '../components/home/ValuePillarsSection';
 import { HomeCtaSection } from '../components/home/HomeCtaSection';
 
-interface HomePageProps {
-  onOpenAssistant?: () => void;
-}
-
-export const HomePage: React.FC<HomePageProps> = ({ onOpenAssistant }) => {
+export const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* 1. Hero & Business Positioning */}
-      <HeroSection onOpenAssistant={onOpenAssistant} />
+      {/* 1. Hero & Strategic Positioning */}
+      <HeroSection />
 
-      {/* 2. Supply Chain Excellence (Origin to Retail) */}
+      {/* 2. Supply Chain Journey (Origin to Retail) */}
       <SupplyChainVisualizer />
 
-      {/* 3. Core Sourcing Capabilities (Commodity Matrix Preview) */}
+      {/* 3. Diagnostic Commodity Sourcing Matrix */}
       <SourcingMatrixPreview />
 
-      {/* 4. Seasonal De-risking (Year-Round Availability) */}
+      {/* 4. Seasonal De-risking Model */}
       <SeasonalDeriskingSection />
 
-      {/* 5. Geographic Network & Origins Map */}
+      {/* 5. Geographic Network & Origins */}
       <NetworkMapSection />
 
-      {/* 6. Group Scale & Ecosystem Synergy (₹228 Cr) */}
+      {/* 6. Group Ecosystem & Scale (₹228 Cr) */}
       <GroupEcosystemSection />
 
-      {/* 7. The Three Pillars of TTB Advantage */}
+      {/* 7. The TTB Advantage (Three Pillars) */}
       <ValuePillarsSection />
 
-      {/* 8. Corporate Institutional RFP CTA */}
-      <HomeCtaSection onOpenAssistant={onOpenAssistant} />
+      {/* 8. Commercial Close CTA */}
+      <HomeCtaSection />
     </div>
   );
 };

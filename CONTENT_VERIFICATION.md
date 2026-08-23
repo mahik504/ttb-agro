@@ -1,71 +1,68 @@
-# TTB Agro India Private Limited — Client Content Verification Checklist
+# TTB Agro India Private Limited — Pre-Launch Verification Checklist
 
-> **Mandatory Pre-Launch Checklist for Client Confirmation**
-> 
-> *To protect company liability and maintain strict regulatory compliance, please review and confirm the following items before connecting your custom `.com` domain.*
+This document details all corporate facts and required client-supplied items prior to mapping the custom `.com` domain.
 
 ---
 
 ## 1. Corporate Identity & Legal Registrations
 
-| Item | Status in Codebase | Client Confirmation Required | Action / File Location |
+| Item | Source / Status | Client Action Required | File Location |
 |---|---|---|---|
-| **Full Legal Name** | `TTB Agro India Private Limited` | ✅ Confirmed from Deck | `src/data/company.ts` |
-| **Registered Office Address** | `Shop No. 3, Plot No. 19, Sector 48, Seawoods, Nerul, Navi Mumbai – 400706` | ⚠️ Confirm current MCA records | `src/data/company.ts` |
-| **CIN (Corporate ID Number)** | `[Structured Placeholder]` | 📝 Provide actual 21-digit CIN | `src/data/certifications.ts` |
-| **GSTIN** | `[27XXXXX0000X1Z5]` | 📝 Provide official GST certificate | `src/data/certifications.ts` |
-| **PAN / TAN** | `[Placeholder]` | 📝 Provide PAN for statutory file | `src/data/certifications.ts` |
+| **Legal Entity Name** | `TTB Agro India Private Limited` (PDF Slide 1) | Confirmed | `src/data/company.ts` |
+| **Operating Philosophy** | `Farmer-First Procurement. Customer-First Quality.` (PDF Slide 2) | Confirmed | `src/data/company.ts` |
+| **Registered Office** | `Shop No. 3, Plot No. 19, Sector 48, Seawoods, Nerul, Navi Mumbai, Maharashtra – 400706` (PDF Slide 11) | Confirmed | `src/data/company.ts` |
+| **FSSAI License** | Statutory documentation on corporate file | Provide 14-digit FSSAI number upon formal request | `src/data/certifications.ts` |
+| **GSTIN** | State of Maharashtra registration on file | Provide GST certificate upon formal request | `src/data/certifications.ts` |
+| **IEC (DGFT)** | Importer Exporter Code on file | Provide 10-digit IEC code upon formal request | `src/data/certifications.ts` |
+| **APEDA Registration** | Scheduled agricultural commodity standards | Provide RCMC registration upon formal request | `src/data/certifications.ts` |
 
 ---
 
-## 2. Food Safety, Trade & Quality Compliance
+## 2. Financial Scale & Group Ecosystem
 
-| Item | Status in Codebase | Client Confirmation Required | Action / File Location |
-|---|---|---|---|
-| **FSSAI License Number** | `[Active Group License]` | 📝 Provide 14-digit FSSAI number | `src/data/certifications.ts` |
-| **IEC (Importer Exporter Code)** | `[Active Import Clearance]` | 📝 Provide 10-digit IEC code | `src/data/certifications.ts` |
-| **APEDA Registration** | `[Pending Client Upload]` | 📝 Provide RCMC certificate if active | `src/data/certifications.ts` |
-| **ISO / HACCP Certifications** | `[Document on Request]` | 📝 Provide certificate copies if certified | `src/data/certifications.ts` |
+| Entity | Role (PDF Slide 4) | Contribution (PDF Slide 3) |
+|---|---|---|
+| **Just Go Eco** | Sustainability & Execution | ₹98 Cr |
+| **SP Coconut** | Processing & Value-Add | ₹80 Cr |
+| **Just Go Project** | Sustainability & Execution | ₹25 Cr |
+| **STP Traders & TTB Agro** | Trading & Procurement | ₹25 Cr (STP Traders) |
+| **Total Group Turnover** | Combined Ecosystem | **₹228 Cr** |
 
----
-
-## 3. Financial & Group Ecosystem Wording
-
-| Item | Status in Codebase | Client Confirmation Required | Action / File Location |
-|---|---|---|---|
-| **Group Turnover Figures** | `₹228 Cr Combined Group Ecosystem` | ✅ Strictly phrased as group ecosystem | `src/data/group.ts` |
-| **Entity Breakdown** | `Just Go Eco (₹98 Cr)`, `SP Coconut (₹80 Cr)`, `Just Go Project (₹25 Cr)`, `STP Traders & TTB (₹25 Cr)` | ⚠️ Confirm entity turnover allocations | `src/data/group.ts` |
+*Note: The website strictly describes ₹228 Cr as the combined total group turnover across sister and affiliate entities.*
 
 ---
 
-## 4. Leadership & Directorship
+## 3. Leadership & Directorship
 
-| Item | Status in Codebase | Client Confirmation Required | Action / File Location |
+| Name | Role | Status | File Location |
 |---|---|---|---|
-| **Director 1** | `Mr. Prakash Patil` | ✅ Confirmed Director | `src/data/leadership.ts` |
-| **Director 2** | `Mr. Harshal Nikam` | ✅ Confirmed Director | `src/data/leadership.ts` |
-| **Director Photographs** | Neutral Monogram Badges | 📸 Provide professional portraits (optional) | `public/images/directors/` |
+| **Mr. Prakash Patil** | Director | Confirmed (PDF Slide 11) | `src/data/leadership.ts` |
+| **Mr. Harshal Nikam** | Director | Confirmed (PDF Slide 11) | `src/data/leadership.ts` |
+| **Photographs** | Neutral Monogram Frames | Optional: Supply high-resolution portraits | `public/images/directors/` |
 
 ---
 
-## 5. Commercial References & Client Logos
+## 4. Commodities & Origins (Diagnostic Matrix)
 
-| Item | Status in Codebase | Client Confirmation Required | Action / File Location |
-|---|---|---|---|
-| **Organised Retail Reference** | `D-Mart` (Descriptive sector reference) | ⚠️ Confirm if logo display is authorized | `src/data/customers.ts` |
-| **QSR / Café References** | `Mani's Cafe`, `Thumbi` | ⚠️ Confirm if logo display is authorized | `src/data/customers.ts` |
-| **Hospitality Reference** | `Udupi Hotels` | ⚠️ Confirm if logo display is authorized | `src/data/customers.ts` |
-
----
-
-## 6. Official Contact Channels & Domain
-
-| Item | Status in Codebase | Client Confirmation Required | Action / File Location |
-|---|---|---|---|
-| **Official Email** | `procurement@ttbagro.com` / `rfp@ttbagro.com` | 📝 Confirm active inbox | `src/data/company.ts` |
-| **Official Phone Number** | `+91 22 4800 XXXX` / `+91 98XXX XXXXX` | 📝 Provide official landline/mobile | `src/data/company.ts` |
-| **Custom Domain** | `https://ttbagro.com` | 🌐 Purchase domain on GoDaddy/Namecheap | `DEPLOYMENT.md` |
+| Produce | Category | Key Varieties & Grades | Origin Regions | Sourcing Strategy |
+|---|---|---|---|---|
+| **Rice** | Staples | Bulk & Processed Grades | Tamil Nadu (Pollachi, Erode) | Direct Local Aggregation |
+| **Pulses** | Staples | Retail & Institutional | Pan-India Mandi Corridors | General Trading |
+| **Apple** | Fresh Produce | Premium Imported & Local | Iran, Turkey, Himachal Pradesh, Kashmir | Dedicated Import Channel |
+| **Banana** | Fresh Produce | Otto & G9 | Tamil Nadu, Karnataka, Maharashtra | Multi-State Sourcing |
+| **Coconut** | Fresh Produce | Fresh & Processed | Tamil Nadu, Karnataka | Direct Local Aggregation |
 
 ---
 
-*Once the client provides the missing certificate numbers and official contact numbers, simply open the respective files in `src/data/` and update the strings. No code refactoring is necessary.*
+## 5. Contact Coordinates & Email Setup
+
+| Item | Current Setting | Action Required Before Launch |
+|---|---|---|
+| **Official Email** | `procurement@ttbagro.com` | Ensure MX records and corporate mailbox are active |
+| **Sales / RFP Email** | `rfp@ttbagro.com` | Ensure inbox alias is active |
+| **Primary Phone** | `null` (Hidden from UI) | Supply verified landline/mobile number when ready |
+| **Form Backend Key** | `.env` (`VITE_FORM_ACCESS_KEY`) | Add Web3Forms / Formspree access key to `.env` |
+
+---
+
+© TTB Agro India Private Limited.

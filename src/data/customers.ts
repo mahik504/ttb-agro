@@ -3,43 +3,43 @@ import { CustomerSegment } from '../types';
 export const customerSegments: CustomerSegment[] = [
   {
     id: 'organised-retail',
-    title: 'Organised Retail & Hypermarket Chains',
-    clientReferences: ['D-Mart (Hypermarket Model)', 'Modern Trade Supermarket Chains', 'E-Grocery Warehouses'],
+    title: 'Organised Retail',
+    clientReferences: ['D-Mart', 'Regional Retail Partners'],
     requirements: [
-      'Strict grading consistency (uniform color, sizing, brix)',
-      'High-volume daily fulfillment across regional distribution centers (DCs)',
-      'Barcode-level batch traceability & retail shelf-life guarantees',
-      'Contractual price stability across seasonal peaks and troughs'
+      'Large-scale, consistent volume supply',
+      'Continuous year-round availability across seasonal cycles',
+      'Uniform grading and dock-ready packaging',
+      'Dependable delivery schedules'
     ],
-    ttbSolution: 'Multi-origin sourcing paired with counter-seasonal import corridors guarantees 100% fill-rate SLAs with zero seasonal stockouts.',
-    volumeTier: 'High Volume (10–100 MT / Week per Category)'
+    ttbSolution: 'Multi-origin domestic procurement combined with dedicated import channels from Iran and Turkey ensures uninterrupted retail fill rates.',
+    volumeTier: 'Commercial High Volume'
   },
   {
     id: 'qsr-cafe',
-    title: 'QSR, Cloud Kitchens & Café Networks',
-    clientReferences: ["Mani's Cafe", 'Thumbi South Indian QSR', 'Fast-Casual Food Service Chains'],
+    title: 'QSR & Café Networks',
+    clientReferences: ['Thumbi', "Mani's Cafe"],
     requirements: [
-      'Daily morning delivery before commercial kitchen prep windows',
-      'Pre-calibrated produce (high-yield coconut meat, consistent banana ripening)',
-      'Hygienic food-grade crates and zero-contact sorting',
-      'Flexible minimum order quantities (MOQ) with rapid re-orders'
+      'Premium quality and steady daily supply',
+      'Fresh coconut and banana culinary consistency',
+      'Reliable morning kitchen intake windows',
+      'Clean food-grade packaging'
     ],
-    ttbSolution: 'Dedicated daily milk-run logistics from our Navi Mumbai operations hub, delivering kitchen-ready produce graded specifically for culinary yield.',
-    volumeTier: 'Medium-High Volume (Daily/Bi-Weekly Dispatches)'
+    ttbSolution: 'Daily scheduled dispatches coordinated from our Navi Mumbai operations hub, supplying kitchen-ready produce graded for consistent culinary yield.',
+    volumeTier: 'Scheduled Daily & Multi-Drop Volume'
   },
   {
-    id: 'hospitality-institutional',
-    title: 'Hospitality & Institutional Food Service',
-    clientReferences: ['Udupi Hotel Networks', 'Corporate Dining & Industrial Caterers', 'Institutional Canteens'],
+    id: 'regional-hospitality',
+    title: 'Regional Hospitality',
+    clientReferences: ['Udupi Hotels', 'Food Service Sector'],
     requirements: [
-      'Bulk staples (Rice & Pulses) with uniform cooking characteristics',
-      'Consistent culinary coconut meat thickness and low moisture variance in staples',
-      'Competitive institutional bulk pricing with structured payment credit cycles',
-      'Consolidated single-vendor invoice for fresh produce and staples'
+      'Bulk institutional supply for the food service sector',
+      'Consistent milling quality in staples (Rice & Pulses)',
+      'Culinary coconut volume reliability',
+      'Competitive institutional contract terms'
     ],
-    ttbSolution: 'Synergistic group integration with SP Coconut and direct rice mill aggregations allows unified institutional supply contracts with significant cost advantages.',
-    volumeTier: 'Institutional Bulk Contracts (Monthly Freight Schedules)'
+    ttbSolution: 'Direct mill aggregation in Tamil Nadu and industrial coconut processing via SP Coconut provide high-volume stability.',
+    volumeTier: 'Bulk Institutional Supply'
   }
 ];
 
-export const clientDisclaimer = "Client names referenced above reflect strategic commercial relationships, reference enterprise accounts, and institutional target categories presented in TTB Agro's corporate profile. Brand logos are displayed for sector illustration and remain the intellectual property of their respective owners.";
+export const clientDisclaimer = "Brand names referenced above reflect customer sectors and commercial relationship categories presented in TTB Agro's corporate strategic deck. Names are displayed as text for sector illustration and remain the intellectual property of their respective holders.";

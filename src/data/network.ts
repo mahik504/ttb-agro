@@ -1,133 +1,119 @@
-import { NetworkNode } from '../types';
+import { NetworkNode, SupplyChainStep } from '../types';
 
 export const networkNodes: NetworkNode[] = [
   {
     id: 'navi-mumbai',
-    name: 'Navi Mumbai Central Hub',
-    region: 'Maharashtra (Seawoods, Nerul)',
+    name: 'Navi Mumbai',
+    region: 'Maharashtra (Headquarters)',
     type: 'Operations Hub',
     coordinates: { x: 50, y: 55 },
-    commodities: ['Strategic Coordination', 'Central Quality Gate', 'Client Dispatch Logistics'],
-    role: 'Central Corporate & Operations Headquarters',
-    details: 'Coordinates multi-state dispatches, port import clearances from Nhava Sheva (JNPT), cold-chain allocation, and client relationship management for institutional retail.'
+    commodities: ['Operations Hub', 'Dispatch Coordination', 'Institutional Client Relations'],
+    role: 'Central Headquarters & Coordination Hub',
+    details: 'Central coordination hub overseeing nationwide agricultural aggregation, port import offloading, dual-stage quality enforcement, and client delivery schedules.'
   },
   {
-    id: 'iran-import',
-    name: 'Iran Import Corridor',
-    region: 'International (Middle East)',
+    id: 'iran-turkey',
+    name: 'Iran & Turkey',
+    region: 'International Import Corridors',
     type: 'Global Import Channel',
-    coordinates: { x: 18, y: 30 },
-    commodities: ['Premium Red Delicious Apples', 'Cold-Stored Apples'],
+    coordinates: { x: 15, y: 28 },
+    commodities: ['Premium Imported Apples'],
     role: 'Dedicated International Supplement Channel',
-    details: 'Dedicated reefer maritime channel supplementing Indian domestic off-season troughs (December through July) to maintain 100% calendar-year retail availability.'
-  },
-  {
-    id: 'turkey-import',
-    name: 'Turkey Import Corridor',
-    region: 'International (Mediterranean/Eurasia)',
-    type: 'Global Import Channel',
-    coordinates: { x: 12, y: 22 },
-    commodities: ['Royal Gala Apples', 'Fuji Apples'],
-    role: 'Dedicated International Supplement Channel',
-    details: 'Direct import partnership with certified European/Eurasian packhouses ensuring strict residue testing and calibrated grading.'
+    details: 'Dedicated import pipelines from certified Eurasian packhouses active during domestic off-season dips to maintain year-round retail availability.'
   },
   {
     id: 'hp-jk',
     name: 'Himachal Pradesh & J&K',
-    region: 'North India (Shimla, Kinnaur, Sopore)',
+    region: 'North India',
     type: 'Domestic Origin',
     coordinates: { x: 48, y: 20 },
-    commodities: ['Orchard Fresh Apples', 'Kashmir Delicious'],
-    role: 'High-Altitude Himalayan Sourcing Hub',
-    details: 'Direct farm-gate aggregation during peak harvest season (August to November), utilizing farm-side pre-cooling and CA storage.'
+    commodities: ['Local Apples'],
+    role: 'Himalayan Apple Origin Belts',
+    details: 'Direct orchard ties across Himachal Pradesh and Kashmir during peak domestic harvest season.'
   },
   {
     id: 'maharashtra',
-    name: 'Maharashtra Agricultural Belt',
-    region: 'Western India (Jalgaon, Solapur, Pune)',
+    name: 'Maharashtra',
+    region: 'Western India',
     type: 'Domestic Origin',
     coordinates: { x: 46, y: 58 },
-    commodities: ['G9 Cavendish Bananas', 'Pulses & Staples'],
-    role: 'High-Volume Western Sourcing Belt',
-    details: 'Direct aggregation from premier banana cooperatives in Jalgaon with rapid turn-around to controlled ethylene ripening facilities.'
+    commodities: ['G9 Bananas'],
+    role: 'Western Horticultural Origin',
+    details: 'Procurement of G9 Cavendish bananas with rapid dispatch coordination for retail chains.'
   },
   {
     id: 'karnataka',
-    name: 'Karnataka Procurement Belt',
-    region: 'South India (Mysore, Hosur, Chitradurga)',
+    name: 'Karnataka',
+    region: 'Mysore, Hosur, Chitradurga',
     type: 'Domestic Origin',
     coordinates: { x: 49, y: 72 },
-    commodities: ['Fresh Coconut', 'Otto / Yelakki Bananas'],
-    role: 'Southern Horticultural Aggregation Node',
-    details: 'Direct farm aggregation linking smallholder grower clusters with dedicated sorting and grading sheds.'
+    commodities: ['Coconuts', 'Otto Bananas'],
+    role: 'Southern Agricultural Node',
+    details: 'Direct aggregation across Mysore, Hosur, and Chitradurga for fresh coconuts and Otto bananas.'
   },
   {
     id: 'tamil-nadu',
-    name: 'Tamil Nadu Agri Corridors',
-    region: 'South India (Pollachi, Erode, Thanjavur)',
+    name: 'Tamil Nadu',
+    region: 'Pollachi, Erode',
     type: 'Domestic Origin',
     coordinates: { x: 53, y: 84 },
-    commodities: ['Paddy & Milled Rice', 'Pollachi Coconuts', 'Bananas'],
-    role: 'Premier Coastal & Delta Procurement Hub',
-    details: 'Deep origin aggregation in Pollachi (coconut capital) and Thanjavur (rice granary) ensuring strict direct-from-source price competitiveness.'
+    commodities: ['Rice', 'Coconuts', 'Bananas'],
+    role: 'Southern Agro Corridor',
+    details: 'Direct aggregation for paddy, fresh coconuts from Pollachi, and bananas across Erode and surrounding belts.'
   }
 ];
 
-export const supplyChainStages = [
+export const supplyChainStages: SupplyChainStep[] = [
   {
     step: "01",
     title: "Origin Aggregation",
-    subtitle: "Farmer-First Direct Ties",
-    description: "Deep, long-term procurement relationships with regional farmer producer groups and local aggregators across Tamil Nadu, Karnataka, Maharashtra, and Himachal Pradesh/J&K, eliminating unnecessary speculative middlemen.",
+    subtitle: "Farmer & Aggregator Ties",
+    description: "Deep tie-ups with regional farmer groups and local aggregators across Tamil Nadu, Karnataka, Maharashtra, Himachal Pradesh, and Jammu & Kashmir.",
     tacticalOperations: [
-      "Direct farm-gate aggregation & fair weight assessment",
-      "On-field preliminary grading & moisture testing",
-      "Fair transparent settlement with grower collectives",
-      "Batch origin tagging for complete lot traceability"
+      "Direct farm-gate and local aggregator procurement",
+      "Fair transparent practices and deep roots at source",
+      "Origin-level preliminary grading and sorting"
     ],
-    qcGate: "Gate 1: Farm-Level Visual, Moisture & Sizing Screen",
+    qcGate: "Stage 1: Origin Procurement Inspection",
     iconName: "Trees"
   },
   {
     step: "02",
     title: "Global Supplement",
-    subtitle: "Counter-Seasonal De-risking",
-    description: "Dedicated reefer maritime import pipelines from Iran and Turkey seamlessly bridge domestic off-season production lulls, ensuring our corporate retail partners never face inventory stockouts.",
+    subtitle: "Counter-Seasonal Supply",
+    description: "Triggering dedicated import channels from Iran and Turkey to supplement domestic off-season dips and guarantee year-round retail availability.",
     tacticalOperations: [
-      "Counter-cyclical harvest scheduling across hemispheres",
-      "Port-side reefer customs clearance via JNPT / Nhava Sheva",
-      "Phytosanitary inspection & cold-chain temperature logger verification",
-      "Continuous Controlled Atmosphere (CA) inventory buffering"
+      "Dedicated import pipelines from Iran and Turkey",
+      "Seamless blending with domestic seasonal cycles",
+      "Port customs clearance and temperature-regulated intake"
     ],
-    qcGate: "Gate 2: International Phytosanitary & Cold-Chain Integrity Audit",
+    qcGate: "Import Channel Phytosanitary & Intake Audit",
     iconName: "Globe2"
   },
   {
     step: "03",
-    title: "Dual-Stage Quality Control",
-    subtitle: "Zero Tolerance on Quality",
-    description: "Quality is not inspected once; it is verified twice. First at the origin aggregation point before dispatch, and second at our central fulfillment facilities prior to final client handover.",
+    title: "Dual-Stage QC",
+    subtitle: "Two Inspection Gates",
+    description: "Rigorous quality checks enforced at both the initial procurement stage and the final dispatch stage prior to client delivery.",
     tacticalOperations: [
-      "Brix sugar testing, penetrometer firmness & skin defect analysis",
-      "Optical sorting for rice and pulses with zero foreign matter tolerance",
-      "Ethylene chamber ripening monitoring for bananas",
-      "Standardized grading against retail chain compliance manuals"
+      "Procurement stage inspection at origin packhouse",
+      "Dispatch stage verification at Navi Mumbai operations hub",
+      "Calibrated grading against commercial customer specifications"
     ],
-    qcGate: "Gate 3: Central Laboratory & Sorting Screen Approval",
+    qcGate: "Stage 2: Final Dispatch Verification Gate",
     iconName: "ShieldCheck"
   },
   {
     step: "04",
     title: "Last-Mile Dispatch",
-    subtitle: "SLA-Driven Institutional Handover",
-    description: "Scheduled, temperature-controlled, daily multi-drop logistics connecting our Navi Mumbai operational hub with distribution centers of organized retail giants, café networks, and hotel chains.",
+    subtitle: "Institutional Handover",
+    description: "Reliable, on-time delivery to organized retail, food service, café networks, and institutional hospitality buyers.",
     tacticalOperations: [
-      "Dedicated multi-temperature fleet with GPS tracking",
-      "Early-morning dock delivery meeting retail warehouse intake windows",
-      "Barcoded palletization and retail-ready packaging",
-      "Real-time electronic Proof of Delivery (e-POD) integration"
+      "Scheduled dispatches meeting customer intake windows",
+      "Temperature-regulated logistics for fresh produce",
+      "Direct handover to retail distribution centers and commercial kitchens"
     ],
-    qcGate: "Gate 4: Dispatch Dock Handover & Temperature Audit",
+    qcGate: "Dock Intake & Delivery Handover",
     iconName: "Truck"
   }
 ];

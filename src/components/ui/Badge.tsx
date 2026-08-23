@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 export interface BadgeProps {
   children: React.ReactNode;
-  variant?: 'green' | 'amber' | 'blue' | 'forest' | 'neutral' | 'outline';
+  variant?: 'neutral' | 'gold' | 'field' | 'dark' | 'outline' | 'green' | 'amber' | 'blue' | 'forest';
   size?: 'sm' | 'md';
   className?: string;
   icon?: React.ReactNode;
@@ -12,25 +12,29 @@ export interface BadgeProps {
 
 export const Badge: React.FC<BadgeProps> = ({
   children,
-  variant = 'forest',
+  variant = 'neutral',
   size = 'md',
   className,
   icon
 }) => {
-  const baseStyles = 'inline-flex items-center font-medium rounded-full shrink-0 select-none';
+  const baseStyles = 'inline-flex items-center font-medium uppercase tracking-wider rounded select-none shrink-0 text-[10px]';
 
   const sizeStyles = {
-    sm: 'px-2.5 py-0.5 text-xs gap-1',
-    md: 'px-3 py-1 text-xs gap-1.5',
+    sm: 'px-2 py-0.5 gap-1',
+    md: 'px-2.5 py-1 gap-1.5',
   };
 
   const variantStyles = {
-    forest: 'bg-forest-100 text-forest-900 border border-forest-200/80',
-    green: 'bg-agri-100 text-agri-900 border border-agri-200',
-    amber: 'bg-amber-100 text-amber-900 border border-amber-200',
-    blue: 'bg-blue-100 text-blue-900 border border-blue-200',
-    neutral: 'bg-gray-100 text-gray-800 border border-gray-200',
-    outline: 'bg-white text-forest-800 border border-forest-300',
+    neutral: 'bg-[#EAE4D5] text-[#3D4A42] border border-[#0E1C14]/10',
+    gold: 'bg-[#C4A35A]/15 text-[#8C7033] border border-[#C4A35A]/30',
+    field: 'bg-[#1A3C2C]/10 text-[#1A3C2C] border border-[#1A3C2C]/20',
+    dark: 'bg-[#0B1E15] text-[#C4A35A] border border-[#C4A35A]/30',
+    outline: 'bg-transparent text-[#3D4A42] border border-[#0E1C14]/20',
+    // Semantic mappings for compatibility
+    green: 'bg-[#1A3C2C]/10 text-[#1A3C2C] border border-[#1A3C2C]/20',
+    amber: 'bg-[#C4A35A]/15 text-[#8C7033] border border-[#C4A35A]/30',
+    blue: 'bg-[#EAE4D5] text-[#3D4A42] border border-[#0E1C14]/15',
+    forest: 'bg-[#0B1E15] text-[#C4A35A] border border-[#C4A35A]/30',
   };
 
   return (

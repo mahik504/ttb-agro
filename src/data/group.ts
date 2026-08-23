@@ -4,63 +4,63 @@ export const groupEntities: GroupEntity[] = [
   {
     id: 'just-go-eco',
     name: 'Just Go Eco',
-    role: 'Sustainable Products & Circular Economy',
+    role: 'Sustainability & Execution',
     turnoverContribution: '₹98 Cr',
-    description: 'Specializes in sustainable, eco-friendly agricultural products, organic inputs, and eco-packaging solutions, championing circular economy frameworks within the agro-industrial supply chain.',
+    description: 'The sustainable products line and project execution arm driving eco-friendly practices across all group operations.',
     capabilities: [
-      'Eco-friendly packaging formats for retail produce',
-      'Sustainable agri-residue upcycling & co-products',
-      'Environmentally conscious logistics & reduction of single-use plastics'
+      'Sustainable agri-product lines',
+      'Eco-friendly practices across supply operations',
+      'Circular resource utilization'
     ],
-    synergyWithTTB: 'Provides TTB Agro with sustainable packaging infrastructure and eco-aligned corporate branding for modern ESG-conscious retail buyers.',
-    badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300'
+    synergyWithTTB: 'Provides TTB Agro with sustainable practices and environmentally conscious execution capabilities.',
+    badgeColor: 'bg-[#1A3C2C]/10 text-[#1A3C2C] border-[#1A3C2C]/20'
   },
   {
     id: 'sp-coconut',
     name: 'SP Coconut',
-    role: 'Industrial Processing & Zero-Waste Value Addition',
+    role: 'Processing & Value-Add',
     turnoverContribution: '₹80 Cr',
-    description: 'A state-of-the-art dedicated coconut processing and aggregation unit. Operates high-capacity sorting, de-husking, and value-addition infrastructure targeting complete zero-waste utilization.',
+    description: 'Dedicated unit for processing fresh coconuts into value-added formats, ensuring zero waste and higher market margins.',
     capabilities: [
-      'Industrial-scale de-husking and sorting (100k+ nuts daily capacity)',
-      'Desiccated coconut powder and copra processing facilities',
-      'Zero-waste extraction converting husk/shell into coir and bio-carbon'
+      'Industrial fresh coconut processing unit',
+      'Value-added coconut formats',
+      'Zero-waste operational philosophy'
     ],
-    synergyWithTTB: 'Enables TTB Agro to deliver both whole high-meat culinary coconuts and processed formats with unmatched price stability and processing margins.',
-    badgeColor: 'bg-amber-100 text-amber-800 border-amber-300'
+    synergyWithTTB: 'Enables TTB Agro to deliver both whole culinary coconuts and processed formats with stable processing capacity.',
+    badgeColor: 'bg-[#C4A35A]/15 text-[#8C7033] border-[#C4A35A]/30'
   },
   {
     id: 'just-go-project',
     name: 'Just Go Project',
-    role: 'Infrastructure, Warehousing & Agro-Logistics Execution',
+    role: 'Sustainability & Execution',
     turnoverContribution: '₹25 Cr',
-    description: 'Focuses on complex project execution, cold storage infrastructure setup, warehouse logistics management, and turnkey agri-infrastructure projects across key trade corridors.',
+    description: 'Project execution arm driving eco-friendly practices, agricultural projects, and operational infrastructure across all group operations.',
     capabilities: [
-      'Cold-chain and Controlled Atmosphere storage asset management',
-      'Turnkey logistical execution and multi-modal fleet coordination',
-      'Specialized agricultural project engineering'
+      'Agro-logistics and infrastructure execution',
+      'Turnkey project management across trade belts',
+      'Operational infrastructure support'
     ],
-    synergyWithTTB: 'Powers TTB Agro’s rapid logistical turnaround and cold-chain asset availability across Western and Southern India.',
-    badgeColor: 'bg-blue-100 text-blue-800 border-blue-300'
+    synergyWithTTB: 'Supports TTB Agro’s execution and regional logistics infrastructure.',
+    badgeColor: 'bg-[#0E1C14]/5 text-[#3D4A42] border-[#0E1C14]/15'
   },
   {
     id: 'stp-traders-ttb',
     name: 'TTB Agro & STP Traders',
-    role: 'Agricultural Procurement, Trading & Distribution Engine',
-    turnoverContribution: '₹25 Cr',
-    description: 'The core commercial trading and origin procurement vehicle connecting growers, millers, and international import desks with institutional retail, QSR, and hotel networks.',
+    role: 'Trading & Procurement',
+    turnoverContribution: '₹25 Cr (STP Traders)',
+    description: 'The core engine sourcing staples like rice and pulses, alongside fresh produce like apples and bananas for retail markets.',
     capabilities: [
-      'Pan-India agricultural commodity trading & direct aggregation',
-      'Dedicated international import corridors (Iran, Turkey)',
-      'Institutional SLA management and retail category supply contracts'
+      'Domestic agricultural commodity trading & direct aggregation',
+      'Dedicated international import channels (Iran & Turkey)',
+      'Organized retail and institutional supply contracts'
     ],
-    synergyWithTTB: 'Acts as the primary client-facing trading entity, directly executing retail contracts with D-Mart, café chains, and hospitality leaders.',
-    badgeColor: 'bg-forest-100 text-forest-800 border-forest-300'
+    synergyWithTTB: 'Acts as the primary commercial sourcing engine executing retail and institutional supply.',
+    badgeColor: 'bg-[#0B1E15] text-[#C4A35A] border-[#C4A35A]/30'
   }
 ];
 
 export const groupSummary = {
   totalTurnover: "₹228 Cr",
-  ecosystemStatement: "TTB Agro India Private Limited operates within a diversified ₹228 Cr agricultural and sustainable processing group ecosystem. This institutional backing ensures robust working capital reserves, dedicated processing facilities, and resilient logistics infrastructure to support uninterrupted commercial supply.",
-  disclaimerNote: "Financial figures represent the combined ecosystem turnover of sister and affiliate entities as presented in the corporate strategic profile."
+  ecosystemStatement: "TTB Agro India operates seamlessly alongside these sister entities. By sharing a holistic agricultural ecosystem, we leverage extensive infrastructure, deep market roots, and the immense financial stability of a highly capitalized conglomerate.",
+  disclaimerNote: "₹228 Cr represents the combined total group turnover across sister and affiliate entities as presented in the corporate profile. TTB Agro operates alongside these entities."
 };

@@ -6,38 +6,38 @@ export interface FAQItem {
 
 export const faqsData: FAQItem[] = [
   {
-    question: "What is TTB Agro India's primary business model?",
-    answer: "TTB Agro India Private Limited is a B2B agricultural sourcing, procurement, trading, processing, and supply chain enterprise. We aggregate agricultural commodities and fresh produce directly from origin growers and global import channels and supply them to organized retail chains, QSR networks, and institutional food-service buyers.",
+    question: "What is TTB Agro India's core business model?",
+    answer: "TTB Agro India Private Limited is a B2B agricultural sourcing, procurement, trading, processing, and distribution company. We connect origin growers in India and dedicated overseas import channels directly to organized retail chains, QSR networks, and institutional food-service buyers.",
     category: "Procurement"
   },
   {
-    question: "How does TTB Agro guarantee year-round availability for seasonal produce like apples?",
-    answer: "We solve seasonal agricultural troughs through strategic origin diversification and counter-seasonal sourcing. Domestic harvest from Himachal Pradesh and Jammu & Kashmir (Aug–Nov) is seamlessly supplemented by dedicated reefer import corridors from Iran and Turkey (Dec–Jul), ensuring 365-day uninterrupted retail availability.",
+    question: "How does TTB Agro guarantee year-round availability for apples?",
+    answer: "We pair domestic orchard harvests in Himachal Pradesh and Kashmir (peaking in autumn) with dedicated import channels from Iran and Turkey (active during domestic off-season dips). This dual-hemisphere strategy neutralizes seasonal supply dips and price volatility.",
     category: "Procurement"
   },
   {
-    question: "What are the core commodities sourced by TTB Agro?",
-    answer: "We focus on two major categories: Staples (Paddy & Milled Rice from Tamil Nadu, Pan-India Pulses) and Fresh Produce (Domestic & Imported Apples, G9/Otto Bananas from TN/KA/MH, and Fresh Culinary Coconuts from Pollachi & Karnataka).",
+    question: "Which commodities are sourced by TTB Agro?",
+    answer: "We source five core categories: Staples (Bulk & processed Rice from Tamil Nadu, Retail & institutional Pulses across India) and Fresh Produce (Premium imported & local Apples, Otto & G9 Bananas from TN, Karnataka, and Maharashtra, and Fresh & processed Coconuts from Pollachi and Karnataka).",
     category: "Procurement"
   },
   {
-    question: "How does the Dual-Stage Quality Control (QC) process work?",
-    answer: "Quality is verified twice. Gate 1 occurs at the farm/origin aggregation point (grading, moisture, visual defect sorting). Gate 2 occurs at our central fulfillment facilities and dispatch docks in Navi Mumbai (brix testing, optical sorting, controlled ripening, cold-chain temperature verification) prior to retail delivery.",
+    question: "What is the Dual-Stage Quality Control process?",
+    answer: "Quality checks are enforced at two critical stages: first at the initial procurement stage at the harvest origin, and second at the final dispatch stage from our Navi Mumbai hub prior to client delivery.",
     category: "Quality"
   },
   {
-    question: "What is TTB Agro's connection to the ₹228 Cr group ecosystem?",
-    answer: "TTB Agro operates alongside established sister entities (Just Go Eco - ₹98 Cr, SP Coconut - ₹80 Cr, Just Go Project - ₹25 Cr, STP Traders - ₹25 Cr) with a combined group turnover of ₹228 Cr. This backing provides institutional balance-sheet strength, dedicated coconut processing units, and robust logistics infrastructure.",
+    question: "What is the ₹228 Cr group ecosystem?",
+    answer: "TTB Agro operates alongside sister entities with a combined ₹228 Cr total group turnover: Just Go Eco (₹98 Cr), SP Coconut (₹80 Cr), Just Go Project (₹25 Cr), and STP Traders (₹25 Cr). This group backing provides infrastructure, processing facilities, and financial stability.",
     category: "Group Scale"
   },
   {
-    question: "Where is TTB Agro's central operations hub located?",
-    answer: "Our operations hub and registered office are located at Shop No. 3, Plot No. 19, Sector 48, Seawoods, Nerul, Navi Mumbai, Maharashtra – 400706, strategically positioned near the JNPT port and Western India consumption centers.",
+    question: "Where is TTB Agro's operations hub located?",
+    answer: "Our operations hub and registered office are located at Shop No. 3, Plot No. 19, Sector 48, Seawoods, Nerul, Navi Mumbai, Maharashtra – 400706.",
     category: "Logistics"
   },
   {
-    question: "How do commercial buyers submit an RFP or partner with TTB Agro?",
-    answer: "Commercial buyers (Retail chains, QSRs, Hospitality chains) can submit requirements directly via our online B2B RFP engine on the Contact page, or reach out to procurement@ttbagro.com. Our institutional desk responds with customized volume-tiered quotes within 24 hours.",
+    question: "How can commercial buyers discuss procurement requirements?",
+    answer: "Commercial buyers can submit their requirements via our contact form or write directly to procurement@ttbagro.com / rfp@ttbagro.com. Our commercial desk responds with formal specifications and volume allocations.",
     category: "Partnerships"
   }
 ];

@@ -1,101 +1,76 @@
 # TTB Agro India Private Limited — Corporate Web Platform
 
-> **Production-Ready B2B Agricultural Procurement, Trading & Supply Chain Web Application**
-
-Built for **TTB Agro India Private Limited** to showcase their multi-origin agricultural sourcing networks, Eurasian import corridors, dual-stage quality control gates, group ecosystem synergy (₹228 Cr), and institutional commercial SLAs.
+Production-ready B2B corporate web platform for **TTB Agro India Private Limited**, engineered according to `DESIGN.md` and strictly grounded in the corporate strategic profile deck.
 
 ---
 
-## 🌟 Key Features & Innovations
+## 1. Stack & Architecture
 
-- **100% Sourced from Strategic Deck**: Every claim, region (TN, KA, MH, HP/J&K, Iran, Turkey), commodity (Rice, Pulses, Apples, Bananas, Coconut), group turnover figure (₹228 Cr across sister entities), and director profile is strictly aligned with the corporate profile.
-- **Domain-Locked B2B Agri Assistant**: Built-in intelligent assistant that answers buyer questions regarding origins, seasonal availability, QC gates, group scale, and RFPs with zero hallucination.
-- **Interactive Supply-Chain Journey**: 4-Stage visualizer from origin aggregation to last-mile dock delivery.
-- **Seasonal De-risking Matrix**: Visual 12-month supply-balancing model showing how domestic harvests (HP & J&K) pair with Eurasian reefer imports (Iran & Turkey) for 365-day continuity.
-- **Geographic Sourcing Map**: Interactive domestic and international node inspector connecting to the Navi Mumbai Operations Hub.
-- **Structured Compliance Vault**: Clean architectural cards for FSSAI, GSTIN, IEC, APEDA, and ISO standards without fabricating fake registration numbers.
-- **B2B Procurement RFP Engine**: Real-time validated commercial inquiry engine capturing buyer categories, volume tiers, and multi-commodity requirements.
-- **Decoupled Data Architecture (`src/data/`)**: All corporate facts, phone numbers, addresses, commodities, certificates, and team members can be updated by editing simple TypeScript data files.
+- **Framework**: Vite + React 18 + TypeScript + React Router DOM
+- **Styling**: Tailwind CSS calibrated to the Editorial Swiss Agricultural Trading House design system (`DESIGN.md`)
+- **Typography**: Fraunces (Headlines) + Plus Jakarta Sans (Body) + JetBrains Mono (Figures)
+- **Deployment**: Zero-config Vercel / Cloudflare Pages deployment with SPA routing and production security headers in `vercel.json`
 
 ---
 
-## 🛠️ Technology Stack
+## 2. Local Development & Build
 
-| Layer | Technology |
-|---|---|
-| **Framework** | Vite + React 18 + TypeScript |
-| **Styling** | Tailwind CSS + Custom `Forest Canopy` Palette |
-| **Icons** | Lucide React |
-| **Routing** | React Router DOM (v6/v7) with ScrollToTop |
-| **Typography** | Plus Jakarta Sans, Outfit, JetBrains Mono |
-| **SEO & Schema** | Structured Organization & LocalBusiness JSON-LD, Sitemap, Robots.txt |
-
----
-
-## 🚀 Quick Start & Development
-
-### 1. Installation
-```bash
-npm install
-```
-
-### 2. Run Local Development Server
+### Run Development Server
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Accessible at [http://localhost:3000](http://localhost:3000).
 
-### 3. Typecheck & Build for Production
+### Production Build
 ```bash
 npm run build
 ```
-The optimized production bundle will be generated in `dist/`.
+Outputs optimized production bundle in `dist/` with strict TypeScript validation.
 
-### 4. Preview Production Build
+### Production Preview
 ```bash
 npm run preview
 ```
 
 ---
 
-## 📁 Project Architecture & Data Management
+## 3. Centralized Content Layer (`src/data/`)
 
-```
-c:\projects\TTB Agro\
-├── public/                     # Static assets, SVG Favicon, Robots.txt, Sitemap.xml
-├── src/
-│   ├── components/
-│   │   ├── chatbot/            # Domain-locked B2B Agri Assistant
-│   │   ├── compliance/         # Structured Certificate Cards & QC Protocols
-│   │   ├── contact/            # Commercial RFP Form Engine
-│   │   ├── home/               # Interactive Homepage Visualizers & Sections
-│   │   ├── layout/             # Sticky Navbar, Corporate Footer, Page Headers
-│   │   └── ui/                 # Reusable Design System Atoms (Button, Card, Badge)
-│   ├── data/                   # 🔑 SINGLE SOURCE OF TRUTH (Centralized Content)
-│   │   ├── company.ts          # Addresses, Phones, Philosophy, Group Metrics
-│   │   ├── commodities.ts      # Specs, MOQs, Origins, Sourcing Strategies
-│   │   ├── network.ts          # Domestic & International Sourcing Nodes
-│   │   ├── group.ts            # Sister Entities & ₹228 Cr Breakdown
-│   │   ├── leadership.ts       # Board of Directors & Governance
-│   │   ├── certifications.ts   # Statutory Compliance Cards & QC Gates
-│   │   ├── customers.ts        # Target Buyer Profiles & References
-│   │   ├── navigation.ts       # Route Definitions
-│   │   └── faq.ts              # Institutional Procurement FAQs
-│   ├── pages/                  # All 11 Route Pages
-│   ├── types/                  # Type Definitions
-│   ├── App.tsx                 # Router & State Orchestrator
-│   └── index.css               # Design System Utilities & Transitions
-├── CONTENT_VERIFICATION.md     # 📋 Checklist for client verification before launch
-├── DEPLOYMENT.md               # 🌐 Step-by-step custom domain deployment guide
-└── PRD.md                      # 📄 Full Product Requirements Document
-```
+All corporate facts, commodities, origins, leadership details, and contact coordinates are centralized in `src/data/` for straightforward client maintenance without touching UI components or CSS:
+
+| File | Content Scope |
+|---|---|
+| `src/data/company.ts` | Legal name, tagline, operating philosophy, address, emails, and group turnover |
+| `src/data/commodities.ts` | Diagnostic matrix for Rice, Pulses, Apples, Bananas, and Coconut |
+| `src/data/network.ts` | Domestic sourcing nodes and international import corridors |
+| `src/data/group.ts` | ₹228 Cr group ecosystem entities and descriptions |
+| `src/data/leadership.ts` | Board of Directors and governance principles |
+| `src/data/certifications.ts` | Statutory licensing architecture and dual-stage QC parameters |
+| `src/data/customers.ts` | Client sectors (Organised Retail, QSR & Café, Regional Hospitality) |
+| `src/data/navigation.ts` | Main navigation and footer anchor links |
+| `src/data/faq.ts` | Procurement FAQs and knowledge base |
+| `src/components/chatbot/assistantKnowledge.ts` | Domain-locked B2B assistant responses |
 
 ---
 
-## 📄 Client Deliverables Included
+## 4. Contact Form Configuration
 
-1. [CONTENT_VERIFICATION.md](file:///c:/projects/TTB%20Agro/CONTENT_VERIFICATION.md): Verification checklist for legal/statutory items.
-2. [DEPLOYMENT.md](file:///c:/projects/TTB%20Agro/DEPLOYMENT.md): Deployment guide for Vercel, Cloudflare Pages, and custom `.com` domains.
-3. [PRD.md](file:///c:/projects/TTB%20Agro/PRD.md): Complete Product Requirements Document.
+The commercial inquiry form in `src/components/contact/RfpForm.tsx` supports:
+- Direct POST via Web3Forms, Formspree, or custom API endpoints using environment variables:
+  - `VITE_FORM_ENDPOINT` (e.g. `https://api.web3forms.com/submit` or custom endpoint)
+  - `VITE_FORM_ACCESS_KEY` (API access key)
+- Automatic fallback: when no API key is present in `.env`, the form formats a structured mailto link directed to `procurement@ttbagro.com`.
+- Integrated bot protection via a hidden honeypot field (`company_website`) and 8-second submission rate limiting.
+- Automatic commodity pre-selection via URL query parameters (e.g. `/contact?commodity=apples`).
+
+---
+
+## 5. Security & Deployment
+
+- **Security Headers**: Configured in `vercel.json` (`nosniff`, `DENY` framing, `strict-origin-when-cross-origin`, `Permissions-Policy`).
+- **No Fabricated Numbers**: Placeholder licenses are clearly labeled as provided upon commercial onboarding.
+- **Group Turnover Clarification**: ₹228 Cr is strictly presented as the combined group ecosystem turnover across sister entities.
+
+---
 
 © TTB Agro India Private Limited.

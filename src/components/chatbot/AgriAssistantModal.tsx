@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, Sparkles, ArrowRight, ShieldAlert, RotateCcw } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { X, Send, ArrowRight, RotateCcw, MessageSquare } from 'lucide-react';
 import { findAssistantResponse, quickPromptChips } from './assistantKnowledge';
 
 interface Message {
@@ -24,8 +25,8 @@ export const AgriAssistantModal: React.FC<AgriAssistantModalProps> = ({ isOpen, 
     {
       id: 'welcome',
       sender: 'assistant',
-      text: 'Hello! I am the TTB Agro B2B Agri Procurement Assistant. How can I assist you with our commodities, sourcing origins, dual-stage QC protocols, or institutional supply partnerships?',
-      timestamp: 'Just now'
+      text: 'Hello. I can assist you with TTB Agro’s agricultural commodities, domestic and global sourcing origins, dual-stage QC protocols, and group ecosystem scale.',
+      timestamp: 'Now'
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -57,7 +58,6 @@ export const AgriAssistantModal: React.FC<AgriAssistantModalProps> = ({ isOpen, 
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate snappy response
     setTimeout(() => {
       const match = findAssistantResponse(query);
       const botMsg: Message = {
@@ -70,7 +70,7 @@ export const AgriAssistantModal: React.FC<AgriAssistantModalProps> = ({ isOpen, 
       };
       setMessages((prev) => [...prev, botMsg]);
       setIsTyping(false);
-    }, 400);
+    }, 250);
   };
 
   const handleReset = () => {
@@ -78,8 +78,8 @@ export const AgriAssistantModal: React.FC<AgriAssistantModalProps> = ({ isOpen, 
       {
         id: 'welcome',
         sender: 'assistant',
-        text: 'Conversation reset. How can I assist you with TTB Agro’s agricultural sourcing network, commodities, or institutional RFPs?',
-        timestamp: 'Just now'
+        text: 'Conversation reset. How can I assist you with TTB Agro’s commodities, origins, or commercial inquiries?',
+        timestamp: 'Now'
       }
     ]);
   };
@@ -87,67 +87,55 @@ export const AgriAssistantModal: React.FC<AgriAssistantModalProps> = ({ isOpen, 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/50 backdrop-blur-xs animate-fadeIn">
-      {/* Modal Container */}
-      <div className="bg-white w-full sm:max-w-lg h-[85vh] sm:h-[620px] rounded-t-2xl sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/50 backdrop-blur-xs">
+      <div className="bg-[#FBF7EE] w-full sm:max-w-md h-[80vh] sm:h-[560px] rounded-t-lg sm:rounded-lg shadow-elevated flex flex-col overflow-hidden border border-[#0E1C14]/15">
         
-        {/* Modal Header */}
-        <div className="bg-forest-950 text-white px-5 py-4 flex items-center justify-between border-b border-forest-900 shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-agri-600 flex items-center justify-center text-white shadow-xs">
-              <Sparkles className="w-4 h-4 text-emerald-200" />
+        {/* Header */}
+        <div className="bg-[#0B1E15] text-[#FBF7EE] px-4 py-3 flex items-center justify-between border-b border-[#C4A35A]/20 shrink-0">
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded bg-[#1A3C2C] flex items-center justify-center text-[#C4A35A] border border-[#C4A35A]/30">
+              <MessageSquare className="w-3.5 h-3.5" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h3 className="font-bold text-sm text-white font-display">TTB Agri Procurement Assistant</h3>
-                <span className="text-[10px] bg-agri-500/30 text-agri-300 font-semibold px-2 py-0.5 rounded-full border border-agri-500/40">
-                  Domain-Locked
-                </span>
-              </div>
-              <p className="text-[11px] text-gray-400">Institutional Sourcing & Supply Chain Engine</p>
+              <h3 className="font-display font-medium text-sm text-[#FBF7EE]">TTB Agro Assistant</h3>
+              <p className="text-[10px] text-[#EAE4D5]/60 font-mono">Verified Corporate Profile Reference</p>
             </div>
           </div>
 
           <div className="flex items-center gap-1">
             <button
               onClick={handleReset}
-              className="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-forest-900 transition-colors"
+              className="p-1 rounded text-[#EAE4D5]/60 hover:text-[#FBF7EE] transition-colors"
               title="Reset Conversation"
             >
-              <RotateCcw className="w-4 h-4" />
+              <RotateCcw className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-forest-900 transition-colors"
+              className="p-1 rounded text-[#EAE4D5]/60 hover:text-[#FBF7EE] transition-colors"
               title="Close Assistant"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        {/* Informational Banner */}
-        <div className="bg-emerald-50 px-4 py-2 text-[11px] text-emerald-900 flex items-center gap-2 border-b border-emerald-100">
-          <ShieldAlert className="w-3.5 h-3.5 text-agri-700 shrink-0" />
-          <span>Answers are strictly referenced from TTB Agro's verified supply chain and corporate profile.</span>
-        </div>
-
-        {/* Message Thread Area */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-[#FAFBF9]">
+        {/* Message Thread */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-[#F4EFE4]">
           {messages.map((msg) => (
             <div
               key={msg.id}
               className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
             >
               <div
-                className={`max-w-[85%] rounded-xl px-4 py-3 text-xs sm:text-sm leading-relaxed shadow-xs ${
+                className={`max-w-[85%] rounded p-3 text-xs leading-relaxed ${
                   msg.sender === 'user'
-                    ? 'bg-forest-900 text-white rounded-br-none'
-                    : 'bg-white border border-gray-200 text-gray-800 rounded-bl-none'
+                    ? 'bg-[#1A3C2C] text-[#FBF7EE] border border-[#C4A35A]/30'
+                    : 'bg-[#FBF7EE] text-[#0E1C14] border border-[#0E1C14]/10'
                 }`}
               >
                 {msg.title && (
-                  <div className="font-bold text-forest-800 mb-1 text-xs uppercase tracking-wider">
+                  <div className="font-mono text-[10px] uppercase font-bold text-[#8C7033] mb-1">
                     {msg.title}
                   </div>
                 )}
@@ -155,68 +143,68 @@ export const AgriAssistantModal: React.FC<AgriAssistantModalProps> = ({ isOpen, 
                 <div className="whitespace-pre-line">{msg.text}</div>
 
                 {msg.action && (
-                  <div className="mt-2.5 pt-2 border-t border-gray-100">
-                    <a
-                      href={msg.action.href}
+                  <div className="mt-2.5 pt-2 border-t border-[#0E1C14]/10">
+                    <Link
+                      to={msg.action.href}
                       onClick={onClose}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-agri-700 hover:text-agri-900 transition-colors"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-[#1A3C2C] hover:underline"
                     >
                       <span>{msg.action.label}</span>
                       <ArrowRight className="w-3 h-3" />
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>
-              <span className="text-[10px] text-gray-400 mt-1 px-1">{msg.timestamp}</span>
+              <span className="text-[9px] text-[#66746B] font-mono mt-0.5 px-1">{msg.timestamp}</span>
             </div>
           ))}
 
           {isTyping && (
-            <div className="flex items-center gap-1.5 text-xs text-gray-500 bg-white border border-gray-200 px-3 py-2 rounded-xl w-24">
-              <span className="w-1.5 h-1.5 rounded-full bg-agri-600 animate-bounce"></span>
-              <span className="w-1.5 h-1.5 rounded-full bg-agri-600 animate-bounce [animation-delay:0.2s]"></span>
-              <span className="w-1.5 h-1.5 rounded-full bg-agri-600 animate-bounce [animation-delay:0.4s]"></span>
+            <div className="flex items-center gap-1 text-xs text-[#66746B] bg-[#FBF7EE] border border-[#0E1C14]/10 px-2.5 py-1.5 rounded w-16">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1A3C2C] animate-pulse"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1A3C2C] animate-pulse [animation-delay:0.2s]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1A3C2C] animate-pulse [animation-delay:0.4s]"></span>
             </div>
           )}
 
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Quick Suggested Query Chips */}
-        <div className="px-4 py-2 bg-white border-t border-gray-100 overflow-x-auto whitespace-nowrap scrollbar-none flex gap-2">
+        {/* Quick Chips */}
+        <div className="px-3 py-2 bg-[#FBF7EE] border-t border-[#0E1C14]/10 overflow-x-auto whitespace-nowrap scrollbar-none flex gap-1.5">
           {quickPromptChips.map((chip, idx) => (
             <button
               key={idx}
               onClick={() => handleSend(chip)}
-              className="text-[11px] bg-gray-50 hover:bg-forest-50 hover:text-forest-900 border border-gray-200 rounded-full px-3 py-1 text-gray-600 transition-colors shrink-0"
+              className="text-[10px] bg-[#F4EFE4] hover:bg-[#EAE4D5] border border-[#0E1C14]/10 rounded px-2.5 py-1 text-[#3D4A42] transition-colors shrink-0"
             >
               {chip}
             </button>
           ))}
         </div>
 
-        {/* Input Bar */}
+        {/* Input Form */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSend();
           }}
-          className="p-3 bg-white border-t border-gray-200 flex items-center gap-2"
+          className="p-2.5 bg-[#FBF7EE] border-t border-[#0E1C14]/10 flex items-center gap-2"
         >
           <input
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Ask about origins, commodities, QC gates, RFP..."
-            className="flex-1 px-3.5 py-2 text-xs sm:text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-agri-600"
+            placeholder="Ask about commodities, origins, QC, or group scale..."
+            className="flex-1 px-3 py-1.5 text-xs border border-[#0E1C14]/15 rounded bg-[#F4EFE4] text-[#0E1C14] focus:outline-none focus:border-[#C4A35A]"
           />
           <button
             type="submit"
             disabled={!inputValue.trim()}
-            className="px-4 py-2 bg-forest-900 hover:bg-forest-950 text-white rounded-lg disabled:opacity-40 disabled:cursor-not-allowed text-xs font-semibold flex items-center gap-1 btn-tactile"
+            className="px-3 py-1.5 bg-[#1A3C2C] hover:bg-[#133022] text-[#FBF7EE] rounded disabled:opacity-40 disabled:cursor-not-allowed text-xs font-medium flex items-center gap-1 border border-[#C4A35A]/30 btn-tactile"
           >
             <span>Send</span>
-            <Send className="w-3.5 h-3.5" />
+            <Send className="w-3 h-3 text-[#C4A35A]" />
           </button>
         </form>
       </div>

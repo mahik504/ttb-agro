@@ -1,177 +1,95 @@
-import React, { useState } from 'react';
-import { CheckCircle, Snowflake, Leaf } from 'lucide-react';
+import React from 'react';
 import { SectionHeading } from '../ui/SectionHeading';
-import { Card } from '../ui/Card';
 
 export const SeasonalDeriskingSection: React.FC = () => {
-  const [selectedSeason, setSelectedSeason] = useState<'all' | 'domestic' | 'import'>('all');
-
-  const months = [
-    { name: 'Jan', domestic: 15, import: 85, status: 'Import Supplemented' },
-    { name: 'Feb', domestic: 10, import: 90, status: 'Import Supplemented' },
-    { name: 'Mar', domestic: 10, import: 90, status: 'Import Supplemented' },
-    { name: 'Apr', domestic: 10, import: 90, status: 'Import Supplemented' },
-    { name: 'May', domestic: 15, import: 85, status: 'Import Supplemented' },
-    { name: 'Jun', domestic: 20, import: 80, status: 'Import Supplemented' },
-    { name: 'Jul', domestic: 30, import: 70, status: 'Pre-Domestic Harvest' },
-    { name: 'Aug', domestic: 90, import: 10, status: 'Domestic Peak Harvest (HP/JK)' },
-    { name: 'Sep', domestic: 100, import: 0, status: 'Domestic Peak Harvest (HP/JK)' },
-    { name: 'Oct', domestic: 100, import: 0, status: 'Domestic Peak Harvest (HP/JK)' },
-    { name: 'Nov', domestic: 85, import: 15, status: 'Domestic CA Storage' },
-    { name: 'Dec', domestic: 40, import: 60, status: 'Transition to Import' },
-  ];
-
   return (
-    <section className="py-20 bg-white border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-20 bg-[#F4EFE4] border-b border-[#0E1C14]/10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <SectionHeading
-          badgeText="SEASONAL DE-RISKING MATRIX"
-          badgeVariant="amber"
-          title="Engineered for"
-          highlightText="Year-Round Supply Continuity."
-          description="Agricultural yields are inherently seasonal, but retail shelves cannot afford stockouts. TTB Agro pairs domestic orchard peaks with dedicated import corridors to deliver uninterrupted 365-day supply."
+          badgeText="STRATEGIC DE-RISKING"
+          title="The Seasonal De-Risking Strategy:"
+          highlightText="Year-Round Continuity."
+          description="Agricultural volumes naturally peak and trough across regional harvest cycles. TTB Agro pairs domestic orchard peaks with dedicated Eurasian import corridors to ensure stable commercial fill rates."
           align="center"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Left Column: Interactive Seasonal Chart (8 Cols) */}
-          <div className="lg:col-span-8 bg-[#FAFBF9] rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-subtle">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-gray-200">
-              <div>
-                <h3 className="text-base font-bold text-gray-900 font-display">
-                  365-Day Apple Supply Balancing Model
-                </h3>
-                <p className="text-xs text-gray-500">
-                  Domestic Harvest (HP & J&K) vs. Dedicated Global Reefer Corridors (Iran & Turkey)
-                </p>
-              </div>
+        {/* Schematic Wave Diagram (Exact Model from Slide 7) */}
+        <div className="bg-[#FBF7EE] rounded border border-[#0E1C14]/10 p-6 sm:p-10 space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#0E1C14]/10 pb-4">
+            <div>
+              <h3 className="text-base font-display font-medium text-[#0E1C14]">
+                Supply Volume vs. Calendar Year Balancing Model
+              </h3>
+              <p className="text-xs text-[#66746B]">
+                Domestic Supply Peaks & Off-Season Dips paired with Strategic Global Import Interventions
+              </p>
+            </div>
+            <div className="text-[11px] font-mono text-[#8C7033] bg-[#C4A35A]/15 px-2.5 py-1 rounded border border-[#C4A35A]/30">
+              Schematic Supply Model
+            </div>
+          </div>
 
-              {/* Filter Toggles */}
-              <div className="flex items-center gap-1.5 p-1 bg-gray-100 rounded-lg text-xs">
-                <button
-                  onClick={() => setSelectedSeason('all')}
-                  className={`px-3 py-1 rounded-md font-medium transition-colors ${
-                    selectedSeason === 'all' ? 'bg-white text-forest-900 shadow-xs font-bold' : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  Combined 100% SLA
-                </button>
-                <button
-                  onClick={() => setSelectedSeason('domestic')}
-                  className={`px-3 py-1 rounded-md font-medium transition-colors ${
-                    selectedSeason === 'domestic' ? 'bg-forest-800 text-white shadow-xs' : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  Domestic Peak
-                </button>
-                <button
-                  onClick={() => setSelectedSeason('import')}
-                  className={`px-3 py-1 rounded-md font-medium transition-colors ${
-                    selectedSeason === 'import' ? 'bg-amberGold-600 text-white shadow-xs' : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  Global Imports
-                </button>
-              </div>
+          {/* SVG Schematic Curve */}
+          <div className="relative w-full h-48 sm:h-60 bg-[#0B1E15] rounded border border-[#C4A35A]/20 p-4 sm:p-6 flex flex-col justify-between overflow-hidden">
+            {/* Top Baseline Header */}
+            <div className="flex items-center justify-between text-[11px] text-[#C4A35A] font-mono border-b border-[#C4A35A]/30 pb-2 z-10">
+              <span className="font-bold tracking-wider">▲ GUARANTEED YEAR-ROUND RETAIL AVAILABILITY</span>
+              <span className="text-[#EAE4D5]/60 text-[10px]">Continuous Supply Baseline</span>
             </div>
 
-            {/* Visual 12-Month Bar Chart */}
-            <div className="space-y-3">
-              <div className="grid grid-cols-12 gap-1 sm:gap-2 text-center text-[10px] font-bold font-mono text-gray-400 pb-1">
-                {months.map((m) => (
-                  <div key={m.name}>{m.name}</div>
-                ))}
+            {/* SVG Waves */}
+            <div className="relative w-full h-full flex items-center justify-center">
+              <svg viewBox="0 0 800 200" className="w-full h-full preserve-3d" fill="none">
+                {/* Guaranteed Top Baseline */}
+                <line x1="20" y1="20" x2="780" y2="20" stroke="#C4A35A" strokeWidth="2.5" strokeDasharray="4 4" />
+                
+                {/* Domestic Harvest Wave (Green Curve) */}
+                <path
+                  d="M 20 160 C 120 160, 160 40, 260 40 C 360 40, 400 160, 500 160 C 600 160, 640 40, 740 40 L 780 80"
+                  stroke="#2D5A43"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+
+                {/* Import Supplementation Wave (Gold Curve) */}
+                <path
+                  d="M 20 50 C 100 50, 140 160, 240 160 C 340 160, 380 50, 480 50 C 580 50, 620 160, 720 160 L 780 140"
+                  stroke="#C4A35A"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+
+            {/* Bottom Timeline Axis */}
+            <div className="flex justify-between items-center text-[10px] sm:text-xs text-[#EAE4D5]/60 font-mono pt-2 border-t border-[#C4A35A]/20 z-10">
+              <span>Q1 (Jan–Mar)</span>
+              <span>Q2 (Apr–Jun)</span>
+              <span>Q3 (Jul–Sep)</span>
+              <span>Q4 (Oct–Dec)</span>
+            </div>
+          </div>
+
+          {/* Legend Strip */}
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs text-[#3D4A42]">
+            <div className="flex flex-wrap items-center gap-6">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-[#2D5A43]"></span>
+                <span className="font-medium">Domestic Supply Peaks & Off-Season Dips</span>
               </div>
-
-              {/* Stacked Bars */}
-              <div className="grid grid-cols-12 gap-1 sm:gap-2 h-44 items-end bg-white p-3 rounded-xl border border-gray-200">
-                {months.map((m) => {
-                  const showDomestic = selectedSeason === 'all' || selectedSeason === 'domestic';
-                  const showImport = selectedSeason === 'all' || selectedSeason === 'import';
-
-                  return (
-                    <div key={m.name} className="h-full flex flex-col justify-end gap-0.5 group relative cursor-pointer">
-                      {/* Tooltip on Hover */}
-                      <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-forest-950 text-white text-[10px] p-2 rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 whitespace-nowrap">
-                        <div className="font-bold">{m.name}: {m.status}</div>
-                        <div>Domestic: {m.domestic}% | Import: {m.import}%</div>
-                      </div>
-
-                      {/* Import Bar (Amber) */}
-                      {showImport && (
-                        <div
-                          style={{ height: `${m.import}%` }}
-                          className="w-full bg-amberGold-500 rounded-t-sm group-hover:bg-amberGold-600 transition-all"
-                        ></div>
-                      )}
-
-                      {/* Domestic Bar (Forest Green) */}
-                      {showDomestic && (
-                        <div
-                          style={{ height: `${m.domestic}%` }}
-                          className="w-full bg-forest-700 rounded-t-sm group-hover:bg-forest-800 transition-all"
-                        ></div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Legend */}
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-3 text-xs text-gray-600">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded bg-forest-700"></span>
-                    <span>Domestic Peak (Himachal & J&K)</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-3 h-3 rounded bg-amberGold-500"></span>
-                    <span>Dedicated Global Reefer (Iran & Turkey)</span>
-                  </div>
-                </div>
-                <div className="text-[11px] font-mono text-agri-700 font-bold">
-                  Guaranteed Continuous Fill Rate: 100%
-                </div>
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-[#C4A35A]"></span>
+                <span className="font-medium">Strategic Interventions (Iran/Turkey Imports & Multi-State Sourcing)</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Key Sourcing Differentiators (4 Cols) */}
-          <div className="lg:col-span-4 space-y-4">
-            <Card variant="bordered" padding="md" className="bg-forest-50/50 border-forest-200">
-              <div className="flex items-center gap-2 mb-2 text-forest-900 font-bold text-sm">
-                <Leaf className="w-4 h-4 text-agri-600" />
-                <span>Multi-State Domestic Depth</span>
-              </div>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                By sourcing across Tamil Nadu, Karnataka, and Maharashtra, our banana and coconut supply remains resilient against local drought, unseasonal rains, or regional transport disruptions.
-              </p>
-            </Card>
-
-            <Card variant="bordered" padding="md" className="bg-amber-50/50 border-amber-200">
-              <div className="flex items-center gap-2 mb-2 text-amber-950 font-bold text-sm">
-                <Snowflake className="w-4 h-4 text-amberGold-600" />
-                <span>Counter-Seasonal Import Channels</span>
-              </div>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Dedicated maritime reefer routes from Iran and Turkey import high-color apples during India's domestic off-season, shielding retail buyers from extreme domestic spot-market spikes.
-              </p>
-            </Card>
-
-            <Card variant="bordered" padding="md" className="bg-white border-gray-200">
-              <div className="flex items-center gap-2 mb-2 text-gray-900 font-bold text-sm">
-                <CheckCircle className="w-4 h-4 text-agri-600" />
-                <span>Zero Retail Stockouts</span>
-              </div>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Predictable procurement pricing and guaranteed weekly volume delivery schedules for modern trade hypermarkets and café networks.
-              </p>
-            </Card>
+          {/* Core Strategic Deck Statement */}
+          <div className="p-4 rounded bg-[#F4EFE4] border border-[#0E1C14]/10 text-xs sm:text-sm text-[#3D4A42] leading-relaxed italic text-center font-display">
+            "By operating dedicated import channels and multi-state procurement grids, we actively neutralize seasonal price volatility and guarantee year-round availability for our retail partners."
           </div>
-
         </div>
 
       </div>
