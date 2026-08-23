@@ -8,29 +8,30 @@ export const NetworkMapSection: React.FC = () => {
   const activeNode = networkNodes.find((n) => n.id === selectedNodeId) || networkNodes[0];
 
   return (
-    <section className="py-16 sm:py-20 bg-[#FBF7EE] border-b border-[#0E1C14]/10">
+    <section className="py-16 sm:py-24 bg-[#F1EBDD] border-b border-[#122017]/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <SectionHeading
-          badgeText="GEOGRAPHIC FOOTPRINT"
-          title="Diversified Procurement Network:"
-          highlightText="Domestic & Global Origins."
-          description="Connecting direct domestic grower clusters in Tamil Nadu, Karnataka, Maharashtra, and Himachal/J&K, alongside dedicated Eurasian import channels to our Navi Mumbai headquarters."
+          badgeText="GEOGRAPHIC SOURCING NETWORK"
+          title="Procurement Origins &amp;"
+          highlightText="Central Coordination."
+          description="Connecting direct agricultural growing regions across India and dedicated import channels from Iran and Turkey to our central coordination headquarters in Navi Mumbai."
           align="center"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left: Interactive Node List (7 Cols) */}
-          <div className="lg:col-span-7 bg-[#0B1E15] text-[#FBF7EE] rounded border border-[#C4A35A]/20 p-6 space-y-3">
-            <div className="flex items-center justify-between border-b border-[#C4A35A]/20 pb-3">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#C4A35A]">
-                Sourcing Nodes & Corridors (Slide 5)
+          {/* Left: Node Index & Schematic SVG (7 Cols) */}
+          <div className="lg:col-span-7 bg-[#0A2118] text-[#F1EBDD] rounded-md border border-[#B99045]/20 p-6 space-y-4 shadow-elevated">
+            <div className="flex items-center justify-between border-b border-[#B99045]/20 pb-3">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#B99045]">
+                Sourcing Corridors &amp; Headquarters (Slide 5)
               </span>
-              <span className="text-[10px] font-mono text-[#EAE4D5]/60">Select node to inspect</span>
+              <span className="text-[10px] font-mono text-[#E4D7BA]/60">Click node to inspect origin</span>
             </div>
 
+            {/* List of Sourcing Nodes */}
             <div className="space-y-2.5 pt-1">
               {networkNodes.map((node) => {
                 const isSelected = node.id === selectedNodeId;
@@ -41,20 +42,20 @@ export const NetworkMapSection: React.FC = () => {
                   <button
                     key={node.id}
                     onClick={() => setSelectedNodeId(node.id)}
-                    className={`w-full text-left p-3 rounded transition-all border flex items-center justify-between btn-tactile ${
+                    className={`w-full text-left p-3.5 rounded-md transition-all border flex items-center justify-between btn-tactile ${
                       isSelected
-                        ? 'bg-[#1A3C2C] text-[#FBF7EE] border-[#C4A35A]/50 shadow-xs'
-                        : 'bg-[#1A3C2C]/20 text-[#EAE4D5]/90 border-[#C4A35A]/10 hover:bg-[#1A3C2C]/40'
+                        ? 'bg-[#17412E] text-[#F1EBDD] border-[#B99045]/60 shadow-xs'
+                        : 'bg-[#17412E]/30 text-[#E4D7BA]/90 border-[#B99045]/15 hover:bg-[#17412E]/50'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div
                         className={`w-7 h-7 rounded flex items-center justify-center shrink-0 text-xs font-bold ${
                           isHub
-                            ? 'bg-[#C4A35A] text-[#0B1E15]'
+                            ? 'bg-[#B99045] text-[#0A2118]'
                             : isGlobal
-                            ? 'bg-[#1A3C2C] text-[#C4A35A] border border-[#C4A35A]/30'
-                            : 'bg-[#0B1E15] text-[#EAE4D5] border border-[#0E1C14]/30'
+                            ? 'bg-[#17412E] text-[#B99045] border border-[#B99045]/40'
+                            : 'bg-[#0A2118] text-[#E4D7BA] border border-[#122017]/40'
                         }`}
                       >
                         <MapPin className="w-3.5 h-3.5" />
@@ -63,73 +64,77 @@ export const NetworkMapSection: React.FC = () => {
                       <div>
                         <div className="text-xs sm:text-sm font-display font-medium flex items-center gap-2">
                           <span>{node.name}</span>
-                          {isHub && (
-                            <span className="text-[9px] uppercase px-1.5 py-0.2 rounded bg-[#C4A35A]/20 text-[#C4A35A] font-mono font-bold">
+                          {isHub ? (
+                            <span className="text-[9px] uppercase px-1.5 py-0.2 rounded bg-[#B99045]/20 text-[#B99045] font-mono font-bold">
                               Headquarters
+                            </span>
+                          ) : (
+                            <span className="text-[9px] uppercase px-1.5 py-0.2 rounded bg-[#0A2118] text-[#E4D7BA]/70 font-mono">
+                              Sourcing Region
                             </span>
                           )}
                         </div>
-                        <div className="text-[11px] text-[#EAE4D5]/70 font-mono">
-                          {node.region} • <span className="text-[#C4A35A]">{node.commodities.join(', ')}</span>
+                        <div className="text-[11px] text-[#E4D7BA]/70 font-mono mt-0.5">
+                          {node.region} • <span className="text-[#B99045]">{node.commodities.join(', ')}</span>
                         </div>
                       </div>
                     </div>
 
-                    <Navigation className={`w-3.5 h-3.5 text-[#C4A35A] transition-transform ${isSelected ? 'rotate-90' : 'opacity-40'}`} />
+                    <Navigation className={`w-3.5 h-3.5 text-[#B99045] transition-transform ${isSelected ? 'rotate-90' : 'opacity-40'}`} />
                   </button>
                 );
               })}
             </div>
 
-            <div className="pt-3 border-t border-[#C4A35A]/20 flex justify-between text-[10px] font-mono text-[#EAE4D5]/60">
-              <span>All nodes coordinate with Navi Mumbai HQ</span>
-              <span>Slide 5 Strategic Network</span>
+            <div className="pt-3 border-t border-[#B99045]/20 flex justify-between text-[10px] font-mono text-[#E4D7BA]/60">
+              <span>* Sourcing regions indicate agricultural supply origins, not branch offices.</span>
+              <span>Slide 5</span>
             </div>
           </div>
 
-          {/* Right: Selected Node Detail (5 Cols) */}
-          <div className="lg:col-span-5 bg-[#F4EFE4] rounded border border-[#0E1C14]/10 p-6 sm:p-7 space-y-5">
-            <div className="border-b border-[#0E1C14]/10 pb-3 flex justify-between items-center">
-              <span className="text-[10px] font-mono uppercase font-bold text-[#8C7033] tracking-widest">
+          {/* Right: Selected Node Detail Panel (5 Cols) */}
+          <div className="lg:col-span-5 bg-[#E4D7BA] rounded-md border border-[#122017]/15 p-6 sm:p-7 space-y-5 shadow-subtle">
+            <div className="border-b border-[#122017]/10 pb-3 flex justify-between items-center">
+              <span className="text-[10px] font-mono uppercase font-bold text-[#B99045] tracking-widest">
                 Node Diagnostics
               </span>
-              <span className="px-2 py-0.5 rounded bg-[#1A3C2C]/10 text-[#1A3C2C] border border-[#1A3C2C]/20 text-[10px] font-mono">
-                {activeNode.type}
+              <span className="px-2.5 py-0.5 rounded bg-[#17412E] text-[#B99045] border border-[#B99045]/30 text-[10px] font-mono">
+                {activeNode.type === 'Operations Hub' ? 'Central Headquarters' : 'Sourcing Region'}
               </span>
             </div>
 
             <div>
-              <h3 className="text-xl sm:text-2xl font-display font-medium text-[#0E1C14]">
+              <h3 className="text-xl sm:text-2xl font-display font-medium text-[#122017]">
                 {activeNode.name}
               </h3>
-              <p className="text-xs text-[#66746B] font-mono mt-0.5">
+              <p className="text-xs text-[#63756A] font-mono mt-0.5">
                 {activeNode.region}
               </p>
             </div>
 
             <div className="space-y-1">
-              <span className="text-[11px] uppercase tracking-wider font-bold text-[#0E1C14] block font-mono">
-                Role in Sourcing Matrix:
+              <span className="text-[11px] uppercase tracking-wider font-bold text-[#122017] block font-mono">
+                Role in Supply Matrix:
               </span>
-              <p className="text-xs sm:text-sm text-[#3D4A42] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#405046] leading-relaxed">
                 {activeNode.role}
               </p>
             </div>
 
             <div className="space-y-1.5">
-              <span className="text-[11px] uppercase tracking-wider font-bold text-[#0E1C14] block font-mono">
+              <span className="text-[11px] uppercase tracking-wider font-bold text-[#122017] block font-mono">
                 Commodities Sourced:
               </span>
               <div className="flex flex-wrap gap-1.5">
                 {activeNode.commodities.map((comm, idx) => (
-                  <span key={idx} className="px-2 py-0.5 rounded bg-[#FBF7EE] text-[#0E1C14] border border-[#0E1C14]/10 text-xs font-mono">
+                  <span key={idx} className="px-2.5 py-1 rounded bg-[#F1EBDD] text-[#122017] border border-[#122017]/10 text-xs font-mono">
                     {comm}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="p-3 rounded bg-[#FBF7EE] border border-[#0E1C14]/10 text-xs text-[#3D4A42] leading-relaxed">
+            <div className="p-3.5 rounded bg-[#F1EBDD] border border-[#122017]/10 text-xs text-[#405046] leading-relaxed">
               {activeNode.details}
             </div>
           </div>

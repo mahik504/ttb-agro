@@ -7,56 +7,49 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: {
-          DEFAULT: '#F4EFE4',
-          elevated: '#FBF7EE',
-          muted: '#EAE4D5',
-        },
-        ink: {
-          DEFAULT: '#0E1C14',
-          soft: '#3D4A42',
-          muted: '#66746B',
+        evergreen: {
+          DEFAULT: '#0A2118',
+          deep: '#061710',
+          light: '#112C20',
         },
         field: {
-          DEFAULT: '#1A3C2C',
-          deep: '#0B1E15',
-          hover: '#133022',
+          DEFAULT: '#17412E',
+          deep: '#0A2118',
+          hover: '#123324',
         },
         leaf: {
-          DEFAULT: '#2D5A43',
+          DEFAULT: '#326049',
           light: '#427A5D',
         },
+        cream: {
+          DEFAULT: '#F1EBDD',
+          light: '#F8F5EC',
+          dark: '#E8DFC9',
+        },
+        parchment: {
+          DEFAULT: '#E4D7BA',
+          light: '#EDE2CC',
+          dark: '#D5C4A1',
+        },
+        ink: {
+          DEFAULT: '#122017',
+          soft: '#405046',
+          muted: '#63756A',
+        },
         gold: {
-          DEFAULT: '#C4A35A',
-          deep: '#8C7033',
-          muted: 'rgba(196, 163, 90, 0.40)',
-          hairline: 'rgba(196, 163, 90, 0.25)',
+          DEFAULT: '#B99045',
+          soft: '#D6B66E',
+          antique: '#B99045',
+          deep: '#8C6C2B',
+          line: 'rgba(185, 144, 69, 0.35)',
         },
         danger: '#8F2D2D',
-        // Backward-compatible semantic mappings
-        forest: {
-          50: '#FBF7EE',
-          100: '#EAE4D5',
-          200: '#D5CDBE',
-          700: '#2D5A43',
-          800: '#1A3C2C',
-          900: '#11291E',
-          950: '#0B1E15',
+        // Semantic backward compatibility
+        paper: {
+          DEFAULT: '#F1EBDD',
+          elevated: '#E4D7BA',
+          muted: '#D5C4A1',
         },
-        agri: {
-          50: '#FBF7EE',
-          100: '#EAE4D5',
-          300: '#C4A35A',
-          400: '#A48644',
-          600: '#1A3C2C',
-          700: '#133022',
-        },
-        sand: {
-          50: '#FBF7EE',
-          100: '#F4EFE4',
-          200: '#E5DEC8',
-          300: '#D5CDBE',
-        }
       },
       fontFamily: {
         display: ['"Fraunces"', 'Georgia', 'serif'],
@@ -64,17 +57,17 @@ export default {
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       boxShadow: {
-        'subtle': '0 1px 2px 0 rgba(14, 28, 20, 0.04)',
-        'elevated': '0 4px 12px -2px rgba(14, 28, 20, 0.06)',
+        'subtle': '0 1px 3px 0 rgba(18, 32, 23, 0.04)',
+        'elevated': '0 6px 16px -2px rgba(18, 32, 23, 0.08)',
       },
       animation: {
-        'mesh-wash': 'meshWash 34s ease-in-out infinite alternate',
+        'harvest-wash': 'harvestWash 32s ease-in-out infinite alternate',
       },
       keyframes: {
-        meshWash: {
+        harvestWash: {
           '0%': { transform: 'scale(1) translate(0%, 0%)' },
-          '50%': { transform: 'scale(1.08) translate(3%, -2%)' },
-          '100%': { transform: 'scale(1) translate(-2%, 3%)' },
+          '50%': { transform: 'scale(1.06) translate(2%, -2%)' },
+          '100%': { transform: 'scale(1) translate(-2%, 2%)' },
         }
       }
     },

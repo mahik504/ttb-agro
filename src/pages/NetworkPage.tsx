@@ -5,11 +5,11 @@ import { SeasonalDeriskingSection } from '../components/home/SeasonalDeriskingSe
 
 export const NetworkPage: React.FC = () => {
   return (
-    <div className="bg-[#F4EFE4] min-h-screen pb-20">
+    <div className="bg-[#F1EBDD] min-h-screen pb-20">
       {/* Page Header */}
       <PageHeader
         badgeText="GEOGRAPHIC SOURCING CORRIDORS"
-        title="Domestic Roots &"
+        title="Domestic Origins &amp;"
         highlightText="Global Import Pipelines."
         description="Our multi-state agricultural sourcing network spans Tamil Nadu, Karnataka, Maharashtra, and Himachal/J&K, supplemented by dedicated import corridors from Iran and Turkey."
         breadcrumbs={[

@@ -18,7 +18,7 @@ export const Card: React.FC<CardProps> = ({
   className,
   ...props
 }) => {
-  const baseStyles = 'rounded border transition-colors duration-150';
+  const baseStyles = 'rounded-md border transition-colors duration-150';
 
   const paddingStyles = {
     none: 'p-0',
@@ -28,13 +28,13 @@ export const Card: React.FC<CardProps> = ({
   };
 
   const variantStyles = {
-    default: 'bg-[#FBF7EE] border-[#0E1C14]/10 text-[#0E1C14] shadow-subtle',
-    elevated: 'bg-[#FBF7EE] border-[#0E1C14]/15 text-[#0E1C14] shadow-elevated',
-    forest: 'bg-[#0B1E15] border-[#C4A35A]/20 text-[#FBF7EE]',
-    bordered: 'bg-transparent border-[#0E1C14]/15 text-[#0E1C14]',
+    default: 'bg-[#E4D7BA] border-[#122017]/10 text-[#122017] shadow-subtle',
+    elevated: 'bg-[#E4D7BA] border-[#122017]/15 text-[#122017] shadow-elevated',
+    forest: 'bg-[#0A2118] border-[#B99045]/20 text-[#F1EBDD]',
+    bordered: 'bg-transparent border-[#122017]/15 text-[#122017]',
   };
 
-  const hoverStyles = hoverEffect ? 'hover:border-[#1A3C2C]/30 hover:bg-[#FDFBF7]' : '';
+  const hoverStyles = hoverEffect ? 'hover:border-[#17412E]/30 hover:bg-[#EDE2CC]' : '';
 
   return (
     <div className={twMerge(clsx(baseStyles, paddingStyles[padding], variantStyles[variant], hoverStyles, className))} {...props}>

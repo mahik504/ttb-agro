@@ -25,7 +25,7 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded btn-tactile transition-colors duration-150 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed select-none tracking-normal';
+  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-md btn-tactile transition-colors duration-150 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed select-none tracking-normal';
 
   const sizeStyles = {
     sm: 'px-3.5 py-1.5 text-xs gap-1.5 font-medium',
@@ -34,10 +34,10 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const variantStyles = {
-    primary: 'bg-[#1A3C2C] hover:bg-[#133022] text-[#FBF7EE] border border-[#C4A35A]/40 shadow-xs active:bg-[#0B1E15]',
-    secondary: 'bg-[#FBF7EE] hover:bg-[#EAE4D5] text-[#0E1C14] border border-[#0E1C14]/15 shadow-xs',
-    outline: 'bg-transparent hover:bg-[#1A3C2C]/10 text-[#0E1C14] border border-[#0E1C14]/25',
-    ghost: 'bg-transparent hover:bg-[#0E1C14]/5 text-[#0E1C14] border-transparent',
+    primary: 'bg-[#17412E] hover:bg-[#123324] text-[#F1EBDD] border border-[#B99045]/40 shadow-xs active:bg-[#0A2118]',
+    secondary: 'bg-[#E4D7BA] hover:bg-[#EDE2CC] text-[#122017] border border-[#122017]/15 shadow-xs',
+    outline: 'bg-transparent hover:bg-[#17412E]/10 text-[#122017] border border-[#122017]/25',
+    ghost: 'bg-transparent hover:bg-[#122017]/5 text-[#122017] border-transparent',
   };
 
   const combinedClasses = twMerge(clsx(baseStyles, sizeStyles[size], variantStyles[variant], className));

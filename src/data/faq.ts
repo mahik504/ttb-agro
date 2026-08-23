@@ -1,43 +1,57 @@
 export interface FAQItem {
+  id: string;
   question: string;
   answer: string;
-  category: 'Procurement' | 'Quality' | 'Logistics' | 'Group Scale' | 'Partnerships';
+  category: 'Overview' | 'Commodities' | 'Supply Chain' | 'Group Scale' | 'Procurement';
 }
 
 export const faqsData: FAQItem[] = [
   {
-    question: "What is TTB Agro India's core business model?",
-    answer: "TTB Agro India Private Limited is a B2B agricultural sourcing, procurement, trading, processing, and distribution company. We connect origin growers in India and dedicated overseas import channels directly to organized retail chains, QSR networks, and institutional food-service buyers.",
-    category: "Procurement"
+    id: 'what-ttb-does',
+    question: "What does TTB Agro do?",
+    answer: "TTB Agro India Private Limited is a B2B agricultural sourcing, procurement, trading, processing, and distribution company. Guided by 'Farmer-First Procurement. Customer-First Quality.', we connect origin growers across India and dedicated overseas import corridors directly to organized retail, food-service networks, and commercial buyers.",
+    category: "Overview"
   },
   {
-    question: "How does TTB Agro guarantee year-round availability for apples?",
-    answer: "We pair domestic orchard harvests in Himachal Pradesh and Kashmir (peaking in autumn) with dedicated import channels from Iran and Turkey (active during domestic off-season dips). This dual-hemisphere strategy neutralizes seasonal supply dips and price volatility.",
-    category: "Procurement"
+    id: 'commodities-sourced',
+    question: "Which commodities does TTB Agro source?",
+    answer: "TTB Agro sources five core commodity categories: Staples (bulk & processed rice from Tamil Nadu, and pan-India retail & institutional pulses) and Fresh Produce (premium imported & local apples, Otto & G9 bananas from Tamil Nadu, Karnataka, and Maharashtra, and fresh & processed coconuts from Tamil Nadu and Karnataka).",
+    category: "Commodities"
   },
   {
-    question: "Which commodities are sourced by TTB Agro?",
-    answer: "We source five core categories: Staples (Bulk & processed Rice from Tamil Nadu, Retail & institutional Pulses across India) and Fresh Produce (Premium imported & local Apples, Otto & G9 Bananas from TN, Karnataka, and Maharashtra, and Fresh & processed Coconuts from Pollachi and Karnataka).",
-    category: "Procurement"
+    id: 'buyer-segments',
+    question: "Which buyer segments does TTB Agro serve?",
+    answer: "Our supply infrastructure serves organized retail supermarket chains (such as D-Mart), QSR and café networks (such as Thumbi and Mani's Cafe), regional hospitality and hotel chains (such as Udupi Hotels), and institutional food-service buyers.",
+    category: "Overview"
   },
   {
-    question: "What is the Dual-Stage Quality Control process?",
-    answer: "Quality checks are enforced at two critical stages: first at the initial procurement stage at the harvest origin, and second at the final dispatch stage from our Navi Mumbai hub prior to client delivery.",
-    category: "Quality"
+    id: 'sourcing-regions',
+    question: "Which sourcing regions are represented in the profile?",
+    answer: "Our multi-origin procurement network spans domestic growing regions in Tamil Nadu (Pollachi, Erode), Karnataka (Mysore, Hosur, Chitradurga), Maharashtra, and Himachal Pradesh & Kashmir, supplemented by dedicated import corridors from Iran and Turkey. All operations coordinate through our central office in Navi Mumbai.",
+    category: "Supply Chain"
   },
   {
-    question: "What is the ₹228 Cr group ecosystem?",
-    answer: "TTB Agro operates alongside sister entities with a combined ₹228 Cr total group turnover: Just Go Eco (₹98 Cr), SP Coconut (₹80 Cr), Just Go Project (₹25 Cr), and STP Traders (₹25 Cr). This group backing provides infrastructure, processing facilities, and financial stability.",
+    id: 'seasonal-gaps',
+    question: "How does the sourcing model address seasonal gaps?",
+    answer: "We balance domestic harvest peaks (such as Himalayan apples in autumn) with strategic import channels from Iran and Turkey (active during domestic off-season troughs). This dual-source approach helps neutralize seasonal supply volatility for commercial retail partners.",
+    category: "Supply Chain"
+  },
+  {
+    id: 'dual-stage-qc',
+    question: "What does dual-stage quality checking mean?",
+    answer: "Quality checks are enforced at two specific milestones: first at the origin procurement stage (farm-gate and local packhouse screening), and second at the final dispatch stage from our Navi Mumbai central hub prior to client delivery handover.",
+    category: "Supply Chain"
+  },
+  {
+    id: 'group-turnover-figure',
+    question: "What does the ₹228 Cr figure represent?",
+    answer: "The figure ₹228 Cr represents the combined total group turnover across sister and affiliate entities: Just Go Eco (₹98 Cr), SP Coconut (₹80 Cr), Just Go Project (₹25 Cr), and STP Traders (₹25 Cr). TTB Agro operates alongside these sister entities within a shared agricultural ecosystem.",
     category: "Group Scale"
   },
   {
-    question: "Where is TTB Agro's operations hub located?",
-    answer: "Our operations hub and registered office are located at Shop No. 3, Plot No. 19, Sector 48, Seawoods, Nerul, Navi Mumbai, Maharashtra – 400706.",
-    category: "Logistics"
-  },
-  {
-    question: "How can commercial buyers discuss procurement requirements?",
-    answer: "Commercial buyers can submit their requirements via our contact form or write directly to procurement@ttbagro.com / rfp@ttbagro.com. Our commercial desk responds with formal specifications and volume allocations.",
-    category: "Partnerships"
+    id: 'discuss-procurement',
+    question: "How can a buyer discuss a procurement requirement?",
+    answer: "Prospective retail and institutional buyers can submit volume and commodity specifications through our website procurement inquiry form, or contact our commercial desk directly via email at procurement@ttbagro.com. Specifications and availability are confirmed per purchase order.",
+    category: "Procurement"
   }
 ];

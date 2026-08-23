@@ -17,7 +17,7 @@ export const Badge: React.FC<BadgeProps> = ({
   className,
   icon
 }) => {
-  const baseStyles = 'inline-flex items-center font-medium uppercase tracking-wider rounded select-none shrink-0 text-[10px]';
+  const baseStyles = 'inline-flex items-center font-mono font-medium uppercase tracking-wider rounded select-none shrink-0 text-[10px]';
 
   const sizeStyles = {
     sm: 'px-2 py-0.5 gap-1',
@@ -25,16 +25,16 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   const variantStyles = {
-    neutral: 'bg-[#EAE4D5] text-[#3D4A42] border border-[#0E1C14]/10',
-    gold: 'bg-[#C4A35A]/15 text-[#8C7033] border border-[#C4A35A]/30',
-    field: 'bg-[#1A3C2C]/10 text-[#1A3C2C] border border-[#1A3C2C]/20',
-    dark: 'bg-[#0B1E15] text-[#C4A35A] border border-[#C4A35A]/30',
-    outline: 'bg-transparent text-[#3D4A42] border border-[#0E1C14]/20',
-    // Semantic mappings for compatibility
-    green: 'bg-[#1A3C2C]/10 text-[#1A3C2C] border border-[#1A3C2C]/20',
-    amber: 'bg-[#C4A35A]/15 text-[#8C7033] border border-[#C4A35A]/30',
-    blue: 'bg-[#EAE4D5] text-[#3D4A42] border border-[#0E1C14]/15',
-    forest: 'bg-[#0B1E15] text-[#C4A35A] border border-[#C4A35A]/30',
+    neutral: 'bg-[#E4D7BA] text-[#405046] border border-[#122017]/10',
+    gold: 'bg-[#B99045]/15 text-[#8C6C2B] border border-[#B99045]/30',
+    field: 'bg-[#17412E]/10 text-[#17412E] border border-[#17412E]/20',
+    dark: 'bg-[#0A2118] text-[#B99045] border border-[#B99045]/30',
+    outline: 'bg-transparent text-[#405046] border border-[#122017]/20',
+    // Semantic mappings
+    green: 'bg-[#17412E]/10 text-[#17412E] border border-[#17412E]/20',
+    amber: 'bg-[#B99045]/15 text-[#8C6C2B] border border-[#B99045]/30',
+    blue: 'bg-[#E4D7BA] text-[#405046] border border-[#122017]/15',
+    forest: 'bg-[#0A2118] text-[#B99045] border border-[#B99045]/30',
   };
 
   return (

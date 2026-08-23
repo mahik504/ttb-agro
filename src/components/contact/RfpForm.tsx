@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Send, CheckCircle2, AlertCircle, Building2, User, Mail, Phone } from 'lucide-react';
+import { Send, CheckCircle2, AlertCircle, Building2, User, Mail, Phone, Info } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
 import { companyInfo } from '../../data/company';
@@ -35,7 +35,6 @@ export const RfpForm: React.FC = () => {
     '100+ MT / Month (Annual Contract)'
   ];
 
-  // Helper to map URL param to commodity option
   const getInitialCommodities = (param: string | null): string[] => {
     if (!param) return [];
     const p = param.toLowerCase();
@@ -56,16 +55,15 @@ export const RfpForm: React.FC = () => {
     commodities: getInitialCommodities(commodityParam),
     volumeTier: '25 – 100 MT / Month',
     message: '',
-    company_website: '', // Honeypot field (hidden)
+    company_website: '', // Honeypot
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [isConfirmedDelivered, setIsConfirmedDelivered] = useState(false);
+  const [unconfiguredNotice, setUnconfiguredNotice] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [isRateLimited, setIsRateLimited] = useState(false);
-  const [mailtoFallbackUrl, setMailtoFallbackUrl] = useState<string | null>(null);
 
-  // Update selected commodity if query param changes
   useEffect(() => {
     if (commodityParam) {
       const match = getInitialCommodities(commodityParam);
@@ -89,21 +87,21 @@ export const RfpForm: React.FC = () => {
     });
   };
 
-  const generateMailtoUrl = (data: typeof formData) => {
-    const subject = encodeURIComponent(`B2B Procurement RFP — ${data.companyName} (${data.fullName})`);
+  const generateMailtoUrl = () => {
+    const subject = encodeURIComponent(`B2B Procurement Requirement — ${formData.companyName} (${formData.fullName})`);
     const body = encodeURIComponent(
       `Hello TTB Agro Commercial Desk,\n\n` +
       `We would like to submit a procurement requirement:\n\n` +
-      `• Contact Person: ${data.fullName}\n` +
-      `• Company: ${data.companyName}\n` +
-      `• Business Email: ${data.workEmail}\n` +
-      `• Phone: ${data.phoneNumber}\n` +
-      `• Buyer Category: ${data.buyerType}\n` +
-      `• Commodities Required: ${data.commodities.join(', ')}\n` +
-      `• Volume Tier: ${data.volumeTier}\n` +
-      `• Specifications / Delivery Location: ${data.message || 'Standard commercial delivery'}\n\n` +
+      `• Contact Person: ${formData.fullName}\n` +
+      `• Company: ${formData.companyName}\n` +
+      `• Business Email: ${formData.workEmail}\n` +
+      `• Phone: ${formData.phoneNumber}\n` +
+      `• Buyer Category: ${formData.buyerType}\n` +
+      `• Commodities: ${formData.commodities.join(', ')}\n` +
+      `• Volume Tier: ${formData.volumeTier}\n` +
+      `• Specifications / Delivery Location: ${formData.message || 'Standard commercial delivery'}\n\n` +
       `Please provide formal specifications, delivery schedules, and commercial contract terms.\n\n` +
-      `Regards,\n${data.fullName}\n${data.companyName}`
+      `Regards,\n${formData.fullName}\n${formData.companyName}`
     );
     return `mailto:${companyInfo.contact.officialEmail}?subject=${subject}&body=${body}`;
   };
@@ -111,21 +109,20 @@ export const RfpForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage('');
-    setMailtoFallbackUrl(null);
+    setUnconfiguredNotice(null);
 
-    // Rate limit prevention
     if (isRateLimited) {
-      setErrorMessage('Please wait a few moments before submitting again.');
+      setErrorMessage('Please wait a few seconds before submitting again.');
       return;
     }
 
-    // Honeypot check for bots
+    // Honeypot check
     if (formData.company_website.trim()) {
-      setIsSuccess(true);
+      setIsConfirmedDelivered(true);
       return;
     }
 
-    // Validation
+    // Client-side validation
     if (!formData.fullName.trim() || !formData.companyName.trim() || !formData.workEmail.trim() || !formData.phoneNumber.trim()) {
       setErrorMessage('Please fill in all required contact fields.');
       return;
@@ -137,107 +134,69 @@ export const RfpForm: React.FC = () => {
     }
 
     if (formData.commodities.length === 0) {
-      setErrorMessage('Please select at least one commodity of interest.');
+      setErrorMessage('Please select at least one commodity category.');
       return;
     }
 
     setIsSubmitting(true);
     setIsRateLimited(true);
-    setTimeout(() => setIsRateLimited(false), 8000); // 8s cooldown
-
-    // Check for configured form endpoint
-    const formEndpoint = (import.meta as any).env?.VITE_FORM_ENDPOINT || 'https://api.web3forms.com/submit';
-    const accessKey = (import.meta as any).env?.VITE_FORM_ACCESS_KEY;
+    setTimeout(() => setIsRateLimited(false), 8000);
 
     try {
-      if (accessKey) {
-        const res = await fetch(formEndpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            access_key: accessKey,
-            subject: `New B2B Procurement RFP from ${formData.companyName}`,
-            from_name: formData.fullName,
-            email: formData.workEmail,
-            phone: formData.phoneNumber,
-            company: formData.companyName,
-            buyer_type: formData.buyerType,
-            commodities: formData.commodities.join(', '),
-            volume_tier: formData.volumeTier,
-            message: formData.message,
-            to: companyInfo.contact.officialEmail
-          })
-        });
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
 
-        if (res.ok) {
-          setIsSuccess(true);
-          setIsSubmitting(false);
-          return;
-        } else {
-          throw new Error('Endpoint rejected payload');
-        }
-      } else {
-        const mailto = generateMailtoUrl(formData);
-        setMailtoFallbackUrl(mailto);
-        setIsSuccess(true);
+      if (response.ok) {
+        setIsConfirmedDelivered(true);
         setIsSubmitting(false);
+      } else {
+        const result = await response.json().catch(() => ({}));
+        setIsSubmitting(false);
+        if (response.status === 501 || result.configured === false) {
+          setUnconfiguredNotice('Online automated dispatch is not configured on this server environment yet. Please send your pre-formatted requirement directly to our verified commercial desk via the button below.');
+        } else {
+          setErrorMessage(result.error || 'Server encountered an issue transmitting your inquiry.');
+        }
       }
     } catch (err) {
       setIsSubmitting(false);
-      const mailto = generateMailtoUrl(formData);
-      setMailtoFallbackUrl(mailto);
-      setErrorMessage('Online dispatch encountered a network delay. You can send your requirement directly via your email client below.');
+      setUnconfiguredNotice('Online automated dispatch is not active in this local environment. Please send your pre-formatted requirement directly via email.');
     }
   };
 
   return (
-    <Card variant="elevated" padding="lg" className="border-[#0E1C14]/15 bg-[#FBF7EE]">
-      {isSuccess ? (
+    <Card variant="elevated" padding="lg" className="border-[#122017]/15 bg-[#E4D7BA] shadow-subtle">
+      {isConfirmedDelivered ? (
         <div className="p-6 sm:p-8 text-center space-y-5">
-          <div className="w-14 h-14 rounded-full bg-[#1A3C2C] text-[#FBF7EE] flex items-center justify-center mx-auto border border-[#C4A35A]/30">
-            <CheckCircle2 className="w-7 h-7 text-[#C4A35A]" />
+          <div className="w-14 h-14 rounded-full bg-[#17412E] text-[#F1EBDD] flex items-center justify-center mx-auto border border-[#B99045]/40 shadow-xs">
+            <CheckCircle2 className="w-7 h-7 text-[#B99045]" />
           </div>
 
           <div>
-            <h3 className="text-xl sm:text-2xl font-display font-medium text-[#0E1C14]">
-              Procurement Requirement Prepared
+            <h3 className="text-xl sm:text-2xl font-display font-medium text-[#122017]">
+              Procurement Inquiry Transmitted
             </h3>
-            <p className="text-xs sm:text-sm text-[#3D4A42] max-w-md mx-auto mt-1 leading-relaxed">
-              Thank you, <strong className="text-[#0E1C14]">{formData.fullName}</strong> ({formData.companyName}).
+            <p className="text-xs sm:text-sm text-[#405046] max-w-md mx-auto mt-1 leading-relaxed">
+              Thank you, <strong className="text-[#122017]">{formData.fullName}</strong>. Your requirement for <strong className="text-[#122017]">{formData.companyName}</strong> has been transmitted to our commercial desk.
             </p>
           </div>
 
-          <div className="p-4 bg-[#F4EFE4] rounded border border-[#0E1C14]/10 text-xs text-left max-w-md mx-auto space-y-1.5 font-mono">
-            <div><strong className="text-[#0E1C14] font-sans">Buyer Category:</strong> {formData.buyerType}</div>
-            <div><strong className="text-[#0E1C14] font-sans">Commodities:</strong> {formData.commodities.join(', ')}</div>
-            <div><strong className="text-[#0E1C14] font-sans">Volume Tier:</strong> {formData.volumeTier}</div>
-            <div><strong className="text-[#0E1C14] font-sans">Desk Inbox:</strong> {companyInfo.contact.officialEmail}</div>
+          <div className="p-4 bg-[#F1EBDD] rounded border border-[#122017]/10 text-xs text-left max-w-md mx-auto space-y-1.5 font-mono">
+            <div><strong className="text-[#122017] font-sans">Buyer Category:</strong> {formData.buyerType}</div>
+            <div><strong className="text-[#122017] font-sans">Commodities:</strong> {formData.commodities.join(', ')}</div>
+            <div><strong className="text-[#122017] font-sans">Volume Tier:</strong> {formData.volumeTier}</div>
+            <div><strong className="text-[#122017] font-sans">Desk Inbox:</strong> {companyInfo.contact.officialEmail}</div>
           </div>
-
-          {mailtoFallbackUrl && (
-            <div className="p-4 rounded bg-[#1A3C2C]/10 border border-[#1A3C2C]/20 text-xs text-[#0E1C14] max-w-md mx-auto space-y-2">
-              <p className="leading-relaxed">
-                Click below to launch your default email client with your requirement pre-formatted:
-              </p>
-              <a
-                href={mailtoFallbackUrl}
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#1A3C2C] text-[#FBF7EE] rounded text-xs font-medium hover:bg-[#133022] transition-colors border border-[#C4A35A]/40"
-              >
-                <Mail className="w-3.5 h-3.5 text-[#C4A35A]" />
-                <span>Open Email Client with RFP</span>
-              </a>
-            </div>
-          )}
 
           <div className="pt-2">
             <button
               type="button"
               onClick={() => {
-                setIsSuccess(false);
-                setMailtoFallbackUrl(null);
+                setIsConfirmedDelivered(false);
+                setUnconfiguredNotice(null);
                 setFormData({
                   fullName: '',
                   companyName: '',
@@ -250,14 +209,15 @@ export const RfpForm: React.FC = () => {
                   company_website: '',
                 });
               }}
-              className="text-xs text-[#1A3C2C] font-medium hover:underline"
+              className="text-xs text-[#17412E] font-medium hover:underline font-mono"
             >
-              Submit Another Requirement
+              Submit Another Procurement Requirement ↗
             </button>
           </div>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6" method="POST">
+          {/* Honeypot field */}
           <div className="hidden" aria-hidden="true">
             <label htmlFor="company_website">Website</label>
             <input
@@ -272,13 +232,32 @@ export const RfpForm: React.FC = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-display font-medium text-[#0E1C14]">
-              Commercial Procurement Inquiry
+            <h3 className="text-xl font-display font-medium text-[#122017]">
+              Commercial Sourcing Inquiry
             </h3>
-            <p className="text-xs text-[#66746B] mt-1">
+            <p className="text-xs text-[#63756A] mt-1">
               Submit your commodity volume requirements for formal specifications, origin schedules, and contract terms.
             </p>
           </div>
+
+          {/* Unconfigured Notice with Direct Email Fallback */}
+          {unconfiguredNotice && (
+            <div className="p-4 rounded bg-[#F1EBDD] border border-[#B99045]/40 text-xs text-[#122017] space-y-3">
+              <div className="flex items-start gap-2 text-[#8C6C2B]">
+                <Info className="w-4 h-4 shrink-0 mt-0.5" />
+                <span className="leading-relaxed font-medium">{unconfiguredNotice}</span>
+              </div>
+              <div className="pt-1">
+                <a
+                  href={generateMailtoUrl()}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#17412E] text-[#F1EBDD] rounded text-xs font-medium hover:bg-[#123324] transition-colors border border-[#B99045]/40"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#B99045]" />
+                  <span>Send Requirement via Email Client</span>
+                </a>
+              </div>
+            </div>
+          )}
 
           {errorMessage && (
             <div className="p-3.5 rounded bg-red-50 border border-red-200 text-[#8F2D2D] text-xs flex items-center gap-2">
@@ -287,13 +266,14 @@ export const RfpForm: React.FC = () => {
             </div>
           )}
 
+          {/* Row 1: Name & Company */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-mono font-bold text-[#0E1C14] uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-mono font-bold text-[#122017] uppercase tracking-wider mb-1.5">
                 Contact Person *
               </label>
               <div className="relative">
-                <User className="w-4 h-4 text-[#66746B] absolute left-3 top-3 pointer-events-none" />
+                <User className="w-4 h-4 text-[#63756A] absolute left-3 top-3 pointer-events-none" />
                 <input
                   type="text"
                   name="fullName"
@@ -301,17 +281,17 @@ export const RfpForm: React.FC = () => {
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   placeholder="e.g. Rajesh Sharma"
-                  className="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm border border-[#0E1C14]/15 rounded bg-[#F4EFE4] text-[#0E1C14] focus:outline-none focus:border-[#C4A35A]"
+                  className="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm border border-[#122017]/15 rounded bg-[#F1EBDD] text-[#122017] focus:outline-none focus:border-[#B99045]"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-mono font-bold text-[#0E1C14] uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-mono font-bold text-[#122017] uppercase tracking-wider mb-1.5">
                 Company / Organization *
               </label>
               <div className="relative">
-                <Building2 className="w-4 h-4 text-[#66746B] absolute left-3 top-3 pointer-events-none" />
+                <Building2 className="w-4 h-4 text-[#63756A] absolute left-3 top-3 pointer-events-none" />
                 <input
                   type="text"
                   name="companyName"
@@ -319,19 +299,20 @@ export const RfpForm: React.FC = () => {
                   value={formData.companyName}
                   onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                   placeholder="e.g. Modern Retail Enterprises"
-                  className="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm border border-[#0E1C14]/15 rounded bg-[#F4EFE4] text-[#0E1C14] focus:outline-none focus:border-[#C4A35A]"
+                  className="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm border border-[#122017]/15 rounded bg-[#F1EBDD] text-[#122017] focus:outline-none focus:border-[#B99045]"
                 />
               </div>
             </div>
           </div>
 
+          {/* Row 2: Email & Phone */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-mono font-bold text-[#0E1C14] uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-mono font-bold text-[#122017] uppercase tracking-wider mb-1.5">
                 Business Email *
               </label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-[#66746B] absolute left-3 top-3 pointer-events-none" />
+                <Mail className="w-4 h-4 text-[#63756A] absolute left-3 top-3 pointer-events-none" />
                 <input
                   type="email"
                   name="workEmail"
@@ -339,17 +320,17 @@ export const RfpForm: React.FC = () => {
                   value={formData.workEmail}
                   onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
                   placeholder="procurement@company.com"
-                  className="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm border border-[#0E1C14]/15 rounded bg-[#F4EFE4] text-[#0E1C14] focus:outline-none focus:border-[#C4A35A]"
+                  className="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm border border-[#122017]/15 rounded bg-[#F1EBDD] text-[#122017] focus:outline-none focus:border-[#B99045]"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-mono font-bold text-[#0E1C14] uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-mono font-bold text-[#122017] uppercase tracking-wider mb-1.5">
                 Phone Number *
               </label>
               <div className="relative">
-                <Phone className="w-4 h-4 text-[#66746B] absolute left-3 top-3 pointer-events-none" />
+                <Phone className="w-4 h-4 text-[#63756A] absolute left-3 top-3 pointer-events-none" />
                 <input
                   type="tel"
                   name="phoneNumber"
@@ -357,22 +338,23 @@ export const RfpForm: React.FC = () => {
                   value={formData.phoneNumber}
                   onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                   placeholder="+91 98765 43210"
-                  className="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm border border-[#0E1C14]/15 rounded bg-[#F4EFE4] text-[#0E1C14] focus:outline-none focus:border-[#C4A35A]"
+                  className="w-full pl-9 pr-3.5 py-2.5 text-xs sm:text-sm border border-[#122017]/15 rounded bg-[#F1EBDD] text-[#122017] focus:outline-none focus:border-[#B99045]"
                 />
               </div>
             </div>
           </div>
 
+          {/* Row 3: Buyer Type & Volume */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-mono font-bold text-[#0E1C14] uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-mono font-bold text-[#122017] uppercase tracking-wider mb-1.5">
                 Buyer Category
               </label>
               <select
                 name="buyerType"
                 value={formData.buyerType}
                 onChange={(e) => setFormData({ ...formData, buyerType: e.target.value })}
-                className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-[#0E1C14]/15 rounded bg-[#F4EFE4] text-[#0E1C14] focus:outline-none focus:border-[#C4A35A]"
+                className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-[#122017]/15 rounded bg-[#F1EBDD] text-[#122017] focus:outline-none focus:border-[#B99045]"
               >
                 {buyerTypeOptions.map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>
@@ -381,14 +363,14 @@ export const RfpForm: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-mono font-bold text-[#0E1C14] uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-mono font-bold text-[#122017] uppercase tracking-wider mb-1.5">
                 Estimated Volume Tier
               </label>
               <select
                 name="volumeTier"
                 value={formData.volumeTier}
                 onChange={(e) => setFormData({ ...formData, volumeTier: e.target.value })}
-                className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-[#0E1C14]/15 rounded bg-[#F4EFE4] text-[#0E1C14] focus:outline-none focus:border-[#C4A35A]"
+                className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-[#122017]/15 rounded bg-[#F1EBDD] text-[#122017] focus:outline-none focus:border-[#B99045]"
               >
                 {volumeOptions.map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>
@@ -397,8 +379,9 @@ export const RfpForm: React.FC = () => {
             </div>
           </div>
 
+          {/* Commodity Selection */}
           <div>
-            <label className="block text-xs font-mono font-bold text-[#0E1C14] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-mono font-bold text-[#122017] uppercase tracking-wider mb-2">
               Commodities Required (Select All Applicable) *
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -411,29 +394,30 @@ export const RfpForm: React.FC = () => {
                     onClick={() => handleCommodityToggle(commodity)}
                     className={`px-3 py-2 rounded text-xs font-medium text-left border transition-all flex items-center justify-between btn-tactile ${
                       isSelected
-                        ? 'bg-[#0B1E15] text-[#FBF7EE] border-[#C4A35A]/50 shadow-xs'
-                        : 'bg-[#F4EFE4] text-[#0E1C14] border-[#0E1C14]/10 hover:border-[#1A3C2C]/30'
+                        ? 'bg-[#0A2118] text-[#F1EBDD] border-[#B99045]/50 shadow-xs'
+                        : 'bg-[#F1EBDD] text-[#122017] border-[#122017]/10 hover:border-[#17412E]/30'
                     }`}
                   >
                     <span className="truncate">{commodity}</span>
-                    {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-[#C4A35A] shrink-0 ml-1" />}
+                    {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-[#B99045] shrink-0 ml-1" />}
                   </button>
                 );
               })}
             </div>
           </div>
 
+          {/* Delivery Hub / Message */}
           <div>
-            <label className="block text-xs font-mono font-bold text-[#0E1C14] uppercase tracking-wider mb-1.5">
-              Delivery Location & Specifications
+            <label className="block text-xs font-mono font-bold text-[#122017] uppercase tracking-wider mb-1.5">
+              Delivery Location &amp; Specifications
             </label>
             <textarea
               name="message"
               rows={3}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="e.g. Require weekly scheduled supply of 25 MT apples at Western India distribution hubs."
-              className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-[#0E1C14]/15 rounded bg-[#F4EFE4] text-[#0E1C14] focus:outline-none focus:border-[#C4A35A]"
+              placeholder="e.g. Require scheduled monthly deliveries at Western India distribution hubs."
+              className="w-full px-3.5 py-2.5 text-xs sm:text-sm border border-[#122017]/15 rounded bg-[#F1EBDD] text-[#122017] focus:outline-none focus:border-[#B99045]"
             ></textarea>
           </div>
 
@@ -444,12 +428,12 @@ export const RfpForm: React.FC = () => {
               variant="primary"
               size="lg"
               className="w-full"
-              icon={<Send className="w-4 h-4 text-[#C4A35A]" />}
+              icon={<Send className="w-4 h-4 text-[#B99045]" />}
             >
               {isSubmitting ? 'Transmitting Requirement...' : 'Submit Procurement Requirement'}
             </Button>
-            <p className="text-[11px] text-[#66746B] text-center mt-2 font-mono">
-              Inquiries are received by our commercial desk at {companyInfo.contact.officialEmail}
+            <p className="text-[11px] text-[#63756A] text-center mt-2 font-mono">
+              Inquiries are directed to our commercial desk at {companyInfo.contact.officialEmail}
             </p>
           </div>
         </form>

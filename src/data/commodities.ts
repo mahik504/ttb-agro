@@ -10,10 +10,10 @@ export const commoditiesData: Commodity[] = [
     procurementStrategy: 'Direct Local Aggregation',
     gradeVariants: ['Bulk & Processed Grades'],
     keySpecs: {
-      packaging: 'Institutional bulk bags & standard trade packaging',
-      shelfLife: 'Standard ambient warehouse storage',
-      moq: 'FCL / Full truckload consignments',
-      seasonalPeak: 'Year-round supply via direct local aggregation'
+      packaging: 'Standard trade & institutional bulk packaging',
+      shelfLife: 'Ambient dry storage',
+      moq: 'Commercial truckload / container consignments',
+      seasonalPeak: 'Sourced via local agricultural aggregation'
     },
     description: 'Procured through direct local aggregation in the primary growing belts of Tamil Nadu, providing consistent milling and bulk grades for commercial retail and hospitality partners.',
     b2bHighlights: [
@@ -21,7 +21,7 @@ export const commoditiesData: Commodity[] = [
       'Dual-stage quality verification at procurement and dispatch',
       'Consistent volume allocation for organized retail schedules'
     ],
-    imageUrl: '' // Local / typographic tile
+    imageUrl: '/images/rice.jpg'
   },
   {
     id: 'pulses',
@@ -32,9 +32,9 @@ export const commoditiesData: Commodity[] = [
     procurementStrategy: 'General Trading',
     gradeVariants: ['Retail & Institutional Grades'],
     keySpecs: {
-      packaging: 'Standard trade bags & bulk institutional packaging',
+      packaging: 'Trade sacks & institutional packaging',
       shelfLife: 'Clean dry warehouse storage',
-      moq: 'Commercial truckload consignments',
+      moq: 'Commercial bulk consignments',
       seasonalPeak: 'Continuous trade flow across major harvest cycles'
     },
     description: 'General trading and aggregation across major Indian pulse corridors, supplying graded staples to retail distributors, cloud kitchens, and institutional food service.',
@@ -43,7 +43,7 @@ export const commoditiesData: Commodity[] = [
       'Rigorous visual and foreign matter screening',
       'Institutional contracts with dependable delivery schedules'
     ],
-    imageUrl: ''
+    imageUrl: '/images/pulses.jpg'
   },
   {
     id: 'apples',
@@ -54,19 +54,19 @@ export const commoditiesData: Commodity[] = [
     procurementStrategy: 'Dedicated Import Channel',
     gradeVariants: ['Premium Imported & Local Varieties'],
     keySpecs: {
-      packaging: 'Telescopic ventilated cartons with protective cell trays',
-      shelfLife: 'Cold-chain and Controlled Atmosphere storage',
-      coldChainTemp: 'Maintained through cold-chain logistics',
-      moq: 'Commercial reefer & multi-drop consignments',
-      seasonalPeak: 'Domestic harvest (Aug–Nov) supplemented by Iran/Turkey imports (Dec–Jul)'
+      packaging: 'Ventilated cartons with protective cell trays',
+      shelfLife: 'Cold-chain handling',
+      coldChainTemp: 'Regulated transit temperatures',
+      moq: 'Commercial consignments',
+      seasonalPeak: 'Domestic harvest (Aug–Nov) supplemented by Iran & Turkey imports (Dec–Jul)'
     },
-    description: 'Combining direct Himalayan orchard procurement in Himachal Pradesh and Kashmir with dedicated import corridors from Iran and Turkey to ensure 365-day availability for retail partners.',
+    description: 'Combining orchard procurement in Himachal Pradesh and Kashmir with dedicated import corridors from Iran and Turkey to bridge domestic seasonal troughs for commercial retail partners.',
     b2bHighlights: [
       'Dedicated Eurasian import channels for domestic off-season supply',
       'Orchard-level procurement during peak domestic harvest',
-      'Continuous year-round supply neutralizing seasonal price volatility'
+      'Dual-source strategy to bridge seasonal availability gaps'
     ],
-    imageUrl: ''
+    imageUrl: '/images/apples.jpg'
   },
   {
     id: 'bananas',
@@ -78,18 +78,18 @@ export const commoditiesData: Commodity[] = [
     gradeVariants: ['Otto & G9'],
     keySpecs: {
       packaging: 'Corrugated cartons with protective lining',
-      shelfLife: 'Managed post-harvest ripening cycles',
-      coldChainTemp: 'Regulated transit temperatures',
+      shelfLife: 'Post-harvest ripening cycles',
+      coldChainTemp: 'Regulated transit',
       moq: 'Scheduled commercial consignments',
       seasonalPeak: 'Staggered harvest rotations across Western & Southern India'
     },
-    description: 'Multi-state sourcing across Maharashtra, Karnataka, and Tamil Nadu to mitigate regional weather risks and maintain steady daily supply of G9 and Otto bananas for modern trade.',
+    description: 'Multi-state sourcing across Maharashtra, Karnataka, and Tamil Nadu to mitigate regional weather risks and maintain steady supply of G9 and Otto bananas for modern trade.',
     b2bHighlights: [
       'Multi-state farm network mitigating regional supply shortfalls',
       'Careful sorting and calibrated grading',
-      'Scheduled dispatch for daily supermarket and QSR intake'
+      'Scheduled dispatch for supermarket and commercial intake'
     ],
-    imageUrl: ''
+    imageUrl: '/images/bananas.jpg'
   },
   {
     id: 'coconut',
@@ -100,17 +100,17 @@ export const commoditiesData: Commodity[] = [
     procurementStrategy: 'Direct Local Aggregation',
     gradeVariants: ['Fresh & Processed Formats'],
     keySpecs: {
-      packaging: 'Ventilated mesh sacks & corrugated cartons',
-      shelfLife: 'Standard mature nut shelf-life',
+      packaging: 'Ventilated mesh sacks & cartons',
+      shelfLife: 'Standard mature nut storage',
       moq: 'Commercial bulk dispatch',
       seasonalPeak: 'Continuous year-round coastal aggregation'
     },
-    description: 'Direct aggregation from premier coconut belts in Pollachi and Karnataka, working in synergy with SP Coconut to supply both whole culinary coconuts and processed value-added formats.',
+    description: 'Direct aggregation from coconut belts in Pollachi and Karnataka, working alongside SP Coconut to supply both whole culinary coconuts and processed value-added formats.',
     b2bHighlights: [
       'Direct coastal aggregation from Pollachi, Mysore, Hosur & Chitradurga',
       'Synergy with SP Coconut dedicated processing unit',
-      'Steady daily supply to regional retail, QSR, and Udupi hotel networks'
+      'Steady supply to regional retail, QSR, and hospitality networks'
     ],
-    imageUrl: ''
+    imageUrl: '/images/coconuts.jpg'
   }
 ];

@@ -34,8 +34,8 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     <div className={twMerge(clsx('flex flex-col max-w-3xl mb-8 sm:mb-12', alignStyles[align], className))}>
       {badgeText && (
         <span className={clsx(
-          'text-[10px] font-bold uppercase tracking-[0.15em] mb-2.5 font-mono',
-          dark ? 'text-[#C4A35A]' : 'text-[#8C7033]'
+          'text-[10px] font-bold uppercase tracking-[0.16em] mb-2 font-mono',
+          dark ? 'text-[#B99045]' : 'text-[#8C6C2B]'
         )}>
           {badgeText}
         </span>
@@ -45,14 +45,14 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
         className={twMerge(
           clsx(
             'text-2xl sm:text-3xl lg:text-4xl font-display font-medium tracking-tight leading-tight',
-            dark ? 'text-[#FBF7EE]' : 'text-[#0E1C14]',
+            dark ? 'text-[#F1EBDD]' : 'text-[#122017]',
             titleClassName
           )
         )}
       >
         {title}{' '}
         {highlightText && (
-          <span className={dark ? 'text-[#C4A35A] font-normal italic' : 'text-[#1A3C2C] font-normal italic'}>
+          <span className={dark ? 'text-[#B99045] font-normal italic' : 'text-[#17412E] font-normal italic'}>
             {highlightText}
           </span>
         )}
@@ -62,7 +62,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
         <p
           className={clsx(
             'mt-3 text-sm sm:text-base leading-relaxed max-w-2xl',
-            dark ? 'text-[#EAE4D5]/80' : 'text-[#3D4A42]'
+            dark ? 'text-[#E4D7BA]/80' : 'text-[#405046]'
           )}
         >
           {description}

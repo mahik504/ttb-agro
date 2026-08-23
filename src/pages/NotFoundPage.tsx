@@ -1,34 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { Home, ArrowLeft } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 
 export const NotFoundPage: React.FC = () => {
   return (
-    <div className="min-h-[70vh] bg-[#F4EFE4] flex items-center justify-center px-4 py-20">
-      <div className="max-w-md w-full text-center space-y-6">
-        <span className="text-xs font-mono uppercase font-bold text-[#8C7033] tracking-widest block">
-          404 ERROR • PAGE NOT FOUND
-        </span>
+    <div className="bg-[#F1EBDD] min-h-[70vh] flex items-center justify-center py-20 px-4">
+      <div className="max-w-md w-full text-center space-y-6 bg-[#E4D7BA] p-8 sm:p-10 rounded-md border border-[#122017]/15 shadow-subtle">
+        <div className="font-mono text-4xl sm:text-5xl font-bold text-[#B99045]">
+          404
+        </div>
 
-        <h1 className="text-4xl sm:text-5xl font-display font-medium text-[#0E1C14] tracking-tight">
-          Page Not Located
-        </h1>
+        <div className="space-y-2">
+          <h1 className="text-2xl font-display font-medium text-[#122017]">
+            Page Not Found
+          </h1>
+          <p className="text-xs sm:text-sm text-[#405046] leading-relaxed">
+            The page or resource you are looking for has moved or does not exist within our corporate directory.
+          </p>
+        </div>
 
-        <p className="text-sm text-[#3D4A42] leading-relaxed">
-          The requested page could not be found. Please navigate back to the home page or explore our agricultural commodity sourcing portfolio.
-        </p>
-
-        <div className="pt-2 flex justify-center gap-3">
-          <Button href="/" variant="primary" size="md" icon={<ArrowLeft className="w-4 h-4 text-[#C4A35A]" />} iconPosition="left">
-            Return to Home
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <Button href="/" variant="primary" size="md" icon={<Home className="w-4 h-4 text-[#B99045]" />}>
+            Return to Homepage
           </Button>
-          <Link
-            to="/commodities"
-            className="px-4 py-2 rounded text-sm text-[#1A3C2C] hover:bg-[#0E1C14]/5 transition-colors font-medium"
-          >
+          <Button href="/commodities" variant="secondary" size="md" icon={<ArrowLeft className="w-4 h-4 text-[#122017]" />} iconPosition="left">
             What We Source
-          </Link>
+          </Button>
+        </div>
+
+        <div className="pt-4 border-t border-[#122017]/10 text-[11px] font-mono text-[#63756A]">
+          TTB Agro India Private Limited
         </div>
       </div>
     </div>

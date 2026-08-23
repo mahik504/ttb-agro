@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
-import { AgriAssistantModal } from './components/chatbot/AgriAssistantModal';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { CommoditiesPage } from './pages/CommoditiesPage';
@@ -15,7 +14,6 @@ import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { DisclaimerPage } from './pages/DisclaimerPage';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { MessageSquare } from 'lucide-react';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -28,13 +26,10 @@ function ScrollToTop() {
 }
 
 export function App() {
-  const [isAssistantOpen, setIsAssistantOpen] = useState(false);
-
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-[#F4EFE4] text-[#0E1C14] selection:bg-[#1A3C2C] selection:text-[#FBF7EE]">
-        
+      <div className="flex flex-col min-h-screen bg-[#F1EBDD] text-[#122017] selection:bg-[#17412E] selection:text-[#F1EBDD]">
         {/* Main Navigation */}
         <Navbar />
 
@@ -48,7 +43,7 @@ export function App() {
             <Route path="/network" element={<NetworkPage />} />
             <Route path="/group" element={<GroupPage />} />
             <Route path="/quality-compliance" element={<CompliancePage />} />
-            <Route path="/contact" element={<ContactPage onOpenAssistant={() => setIsAssistantOpen(true)} />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/disclaimer" element={<DisclaimerPage />} />
@@ -56,27 +51,8 @@ export function App() {
           </Routes>
         </main>
 
-        {/* Footer */}
+        {/* Corporate Footer */}
         <Footer />
-
-        {/* Quiet FAB for Assistant */}
-        <div className="fixed bottom-5 right-5 z-30">
-          <button
-            onClick={() => setIsAssistantOpen(true)}
-            className="flex items-center gap-2 px-3.5 py-2 bg-[#1A3C2C] hover:bg-[#133022] text-[#FBF7EE] rounded shadow-elevated border border-[#C4A35A]/40 transition-colors btn-tactile group text-xs font-medium"
-            aria-label="Ask TTB Agro Assistant"
-          >
-            <MessageSquare className="w-3.5 h-3.5 text-[#C4A35A]" />
-            <span>Ask TTB</span>
-          </button>
-        </div>
-
-        {/* Assistant Modal */}
-        <AgriAssistantModal
-          isOpen={isAssistantOpen}
-          onClose={() => setIsAssistantOpen(false)}
-        />
-
       </div>
     </Router>
   );

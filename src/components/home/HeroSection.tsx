@@ -5,69 +5,78 @@ import { companyInfo } from '../../data/company';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative mesh-wash-dark text-[#FBF7EE] overflow-hidden pt-16 pb-20 sm:pt-24 sm:pb-28 border-b border-[#C4A35A]/20 min-h-[86vh] flex flex-col justify-center">
-      {/* Background Architectural Grid Pattern */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#C4A35A_1px,transparent_1px)] [background-size:28px_28px]"></div>
+    <section className="relative bg-[#0A2118] text-[#F1EBDD] overflow-hidden border-b border-[#B99045]/20 min-h-[88vh] flex items-center">
+      {/* Background Image Layer (55–65% Visual Presence with Editorial Mask) */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/hero.jpg"
+          alt="Agricultural sourcing and fresh produce aggregation"
+          className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity scale-105"
+        />
+        {/* Editorial Linear & Radial Dark Overlays for Pristine Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A2118] via-[#0A2118]/85 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A2118] via-transparent to-[#0A2118]/60"></div>
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#B99045_1px,transparent_1px)] [background-size:32px_32px]"></div>
+      </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-7">
-        
-        {/* Top Gold Kicker */}
-        <div className="inline-flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C4A35A]"></span>
-          <span className="text-xs sm:text-sm font-mono font-medium tracking-[0.2em] uppercase text-[#C4A35A]">
-            {companyInfo.legalName}
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C4A35A]"></span>
-        </div>
+      {/* Hero Content Container */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10 w-full">
+        <div className="max-w-2xl space-y-6 sm:space-y-7">
+          
+          {/* Top Gold Kicker */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#17412E]/70 border border-[#B99045]/30">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B99045]"></span>
+            <span className="text-[11px] font-mono font-medium tracking-[0.18em] uppercase text-[#B99045]">
+              {companyInfo.legalName}
+            </span>
+          </div>
 
-        {/* Main H1 in Fraunces */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-medium tracking-tight leading-[1.12] text-[#FBF7EE]">
-          Resilient supply chains from origin growers to organised retail.
-        </h1>
+          {/* Main H1 in Fraunces */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-medium tracking-tight leading-[1.12] text-[#F1EBDD]">
+            Resilient supply chains from origin growers to organised retail.
+          </h1>
 
-        {/* Concise Narrative Subtitle (PDF Slide 2) */}
-        <p className="text-base sm:text-lg text-[#EAE4D5]/80 leading-relaxed max-w-2xl mx-auto">
-          Sourcing with integrity across India and global import channels, delivering with precision to retail chains, hospitality networks, and institutional buyers.
-        </p>
+          {/* PDF-Grounded Narrative Subtitle */}
+          <p className="text-sm sm:text-base lg:text-lg text-[#E4D7BA]/85 leading-relaxed">
+            Sourcing with integrity across India and strategic overseas import channels, delivering with precision to retail supermarket chains, café networks, and commercial food-service buyers.
+          </p>
 
-        {/* Single Primary CTA and Clean Secondary Link */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-          <Button href="/contact" variant="primary" size="lg" icon={<ArrowUpRight className="w-4 h-4 text-[#C4A35A]" />}>
-            Discuss procurement requirements
-          </Button>
-          <a
-            href="/supply-chain"
-            className="text-xs sm:text-sm text-[#EAE4D5]/70 hover:text-[#C4A35A] transition-colors inline-flex items-center gap-1 font-medium underline underline-offset-4"
-          >
-            <span>Our supply journey</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
+          {/* Primary CTA & Secondary Link */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <Button href="/contact" variant="primary" size="lg" icon={<ArrowUpRight className="w-4 h-4 text-[#B99045]" />}>
+              Discuss procurement requirements
+            </Button>
+            <a
+              href="/supply-chain"
+              className="text-xs sm:text-sm text-[#E4D7BA]/80 hover:text-[#B99045] transition-colors inline-flex items-center justify-center gap-1.5 font-medium py-2 sm:py-0"
+            >
+              <span>Explore our supply journey</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
 
-        {/* Thin Gold Journey Line (Four Steps) */}
-        <div className="pt-8 pb-4">
-          <div className="w-full max-w-xl mx-auto border-t border-[#C4A35A]/30 relative">
-            <div className="flex justify-between items-center text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#C4A35A] pt-3 px-1">
-              <span>01. Origin</span>
-              <span className="text-[#EAE4D5]/40">→</span>
-              <span>02. Global Import</span>
-              <span className="text-[#EAE4D5]/40">→</span>
-              <span>03. Dual-Stage QC</span>
-              <span className="text-[#EAE4D5]/40">→</span>
-              <span>04. Retail Dispatch</span>
+          {/* Gold Route Journey Trace */}
+          <div className="pt-6 sm:pt-8">
+            <div className="w-full border-t border-[#B99045]/30 pt-3">
+              <div className="grid grid-cols-4 text-center sm:text-left text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#B99045]">
+                <span>01. Origin</span>
+                <span>02. Global Import</span>
+                <span>03. Dual-Stage QC</span>
+                <span>04. Retail Dispatch</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Trust Strip */}
-        <div className="pt-4 border-t border-[#0E1C14]/30 flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-[#EAE4D5]/60 font-mono">
-          <span>₹228 Cr Group Ecosystem</span>
-          <span className="text-[#C4A35A]/40">•</span>
-          <span>Navi Mumbai Operations Hub</span>
-          <span className="text-[#C4A35A]/40">•</span>
-          <span>Rice • Pulses • Apples • Bananas • Coconut</span>
-        </div>
+          {/* Restrained Group Metric Strip */}
+          <div className="pt-2 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-[#E4D7BA]/60 font-mono">
+            <span>₹228 Cr Combined Group Turnover</span>
+            <span className="text-[#B99045]/40">•</span>
+            <span>Navi Mumbai Operations Hub</span>
+            <span className="text-[#B99045]/40">•</span>
+            <span>Rice • Pulses • Apples • Bananas • Coconut</span>
+          </div>
 
+        </div>
       </div>
     </section>
   );
