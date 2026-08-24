@@ -1,31 +1,165 @@
 # TTB Agro India Private Limited — Corporate Web Platform
 
-Production-ready B2B corporate web platform for **TTB Agro India Private Limited**, engineered according to `DESIGN.md` and strictly grounded in the corporate strategic profile deck.
+Production-ready B2B agricultural procurement and supply chain web platform for **TTB Agro India Private Limited**, engineered according to *The Harvest Ledger* design system and strictly grounded in the corporate strategic profile deck.
 
 ---
 
-## 1. Stack & Architecture
+## 🌾 1. Business Context & Strategic Overview
 
-- **Framework**: Vite + React 18 + TypeScript + React Router DOM
-- **Styling**: Tailwind CSS calibrated to the Editorial Swiss Agricultural Trading House design system (`DESIGN.md`)
-- **Typography**: Fraunces (Headlines) + Plus Jakarta Sans (Body) + JetBrains Mono (Figures)
-- **Deployment**: Zero-config Vercel / Cloudflare Pages deployment with SPA routing and production security headers in `vercel.json`
+- **Legal Entity**: `TTB Agro India Private Limited`
+- **Positioning**: *"Resilient Supply Chains Connecting Origin Growers to Organised Retail"*
+- **Operating Philosophy**: *"Farmer-First Procurement. Customer-First Quality."*
+- **Group Scale**: Part of a diversified **₹228 Cr Combined Group Turnover** (*Just Go Eco ₹98 Cr, SP Coconut ₹80 Cr, Just Go Project ₹25 Cr, STP Traders ₹25 Cr*).
+- **Core Operations**:
+  - Direct domestic agricultural aggregation across **Tamil Nadu** (Rice, Coconuts, Bananas), **Karnataka** (Coconuts, Otto Bananas), **Maharashtra** (G9 Bananas, Mandi trading), and **Himachal Pradesh & Kashmir** (Apples).
+  - Dedicated Eurasian import corridors from **Iran** and **Turkey** to bridge domestic off-season availability gaps for modern retail.
+  - Zero-waste value addition through dedicated industrial coconut processing unit (**SP Coconut**).
+  - **Dual-Stage Quality Control**: Enforced at origin procurement screening and central Navi Mumbai dispatch hub prior to client handover.
+- **Headquarters / Operations Hub**:
+  - `Shop No. 3, Plot No. 19, Sector 48, Seawoods, Nerul, Navi Mumbai, Maharashtra – 400706`
 
 ---
 
-## 2. Local Development & Build
+## 🛠️ 2. Technology Stack
 
-### Run Development Server
+- **Core Framework**: [Vite 6](https://vitejs.dev/) + [React 18](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Routing**: [React Router DOM v6](https://reactrouter.com/) (SPA with scroll restoration)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + CSS Custom Properties
+- **Design Direction**: *The Harvest Ledger* (Editorial Swiss Agricultural Trading House)
+- **Typography**: `Fraunces` (Headlines) + `Plus Jakarta Sans` (UI / Body) + `JetBrains Mono` (Figures & Codes)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Serverless API**: Vercel Serverless Functions (`/api/inquiry.ts`) for secure backend email dispatch
+- **Hosting / Deploy**: Vercel / Cloudflare Pages ready with custom security headers in `vercel.json`
+
+---
+
+## 📁 3. Project Architecture & Directory Structure
+
+```
+TTB Agro/
+├── api/                           # Serverless Functions
+│   └── inquiry.ts                 # Server-side RFP processing & email dispatch
+├── docs/                          # Architecture & Compliance Documentation
+│   ├── ARCHITECTURE.md            # Detailed technical blueprint & component tree
+│   ├── CONTENT_VERIFICATION.md    # Fact register & client pre-launch checklist
+│   ├── ASSET_SOURCES.md           # Image provenance & commercial open licenses
+│   └── DEPLOYMENT.md              # Vercel & custom domain setup guide
+├── public/                        # Static Assets
+│   ├── favicon.svg                # Brand icon
+│   ├── og-image.svg               # OpenGraph preview card
+│   ├── robots.txt                 # Search engine directives
+│   ├── sitemap.xml                # SEO sitemap
+│   └── images/                    # Locally hosted, licensed product photography
+│       ├── apples.jpg             # Orchard apple crates
+│       ├── bananas.jpg            # G9 & Cavendish bananas
+│       ├── coconuts.jpg           # Fresh whole coconuts
+│       ├── hero.jpg               # Harvest produce banner
+│       ├── pulses.jpg             # Wholesale pulses & lentils
+│       ├── rice.jpg               # Rice grains in sack detail
+│       └── supply-chain.jpg       # Logistics & dock dispatch
+├── src/
+│   ├── components/                # Modular UI Components
+│   │   ├── contact/
+│   │   │   └── RfpForm.tsx        # RFP form with honeypot & dual-mode dispatch
+│   │   ├── home/                  # Homepage editorial modules
+│   │   │   ├── GroupEcosystemSection.tsx   # ₹228 Cr group portfolio data panel
+│   │   │   ├── HeroSection.tsx             # Photographic editorial hero
+│   │   │   ├── HomeCtaSection.tsx          # Commercial close with Google Maps link
+│   │   │   ├── NetworkMapSection.tsx       # Geographic sourcing node inspector
+│   │   │   ├── SeasonalDeriskingSection.tsx # Two-wave qualitative sourcing model
+│   │   │   ├── SourcingMatrixPreview.tsx   # Interactive commodity selector
+│   │   │   ├── SupplyChainVisualizer.tsx   # 4-stage supply chain route
+│   │   │   └── ValuePillarsSection.tsx     # The TTB Advantage pillars
+│   │   ├── layout/                # Shell & navigation
+│   │   │   ├── Footer.tsx         # Corporate footer with address & disclosures
+│   │   │   ├── Navbar.tsx         # Responsive navbar with mobile drawer
+│   │   │   └── PageHeader.tsx     # Reusable subpage header with breadcrumbs
+│   │   └── ui/                    # UI primitives
+│   │       ├── Badge.tsx          # Tag / status badge
+│   │       ├── Button.tsx         # Tactile primary / secondary buttons
+│   │       ├── Card.tsx           # Bordered container card
+│   │       └── SectionHeading.tsx # Editorial H2 heading with gold eyebrow
+│   ├── data/                      # Centralized Data Layer (Fact-Locked)
+│   │   ├── commodities.ts         # Diagnostic matrix for 5 core commodities
+│   │   ├── company.ts             # Corporate coordinates, philosophy, metrics
+│   │   ├── customers.ts           # Customer sectors & text references
+│   │   ├── faq.ts                 # 8 fact-safe Procurement Q&A items
+│   │   ├── group.ts               # 4 sister entities & ₹228 Cr group turnover
+│   │   ├── leadership.ts          # Board of Directors & governance
+│   │   ├── navigation.ts          # Navigation links & footer menus
+│   │   ├── network.ts             # Domestic origins & Eurasian import nodes
+│   │   └── qcProtocols.ts         # Dual-stage QC inspection protocols
+│   ├── pages/                     # 12 Complete Route Views
+│   │   ├── AboutPage.tsx          # Corporate profile, philosophy & leadership
+│   │   ├── CommoditiesPage.tsx    # Full commodity portfolio specifications
+│   │   ├── CompliancePage.tsx     # Quality at procurement & dispatch
+│   │   ├── ContactPage.tsx        # Procurement desk, RFP form & Q&A
+│   │   ├── DisclaimerPage.tsx     # Group scale & brand reference disclosures
+│   │   ├── GroupPage.tsx          # ₹228 Cr group ecosystem & customer sectors
+│   │   ├── HomePage.tsx           # Primary landing experience
+│   │   ├── NetworkPage.tsx        # Geographic sourcing corridors & seasonality
+│   │   ├── NotFoundPage.tsx       # 404 handler
+│   │   ├── PrivacyPolicyPage.tsx  # Commercial data privacy policy
+│   │   ├── SupplyChainPage.tsx    # 4-stage supply route & SP Coconut unit
+│   │   └── TermsPage.tsx          # Commercial terms of supply
+│   ├── types/
+│   │   └── index.ts               # TypeScript interfaces
+│   ├── App.tsx                    # Route tree & scroll restoration
+│   ├── index.css                  # Global styles, variables & light field
+│   └── main.tsx                   # DOM entrypoint
+├── .env.example                   # Environment variable template
+├── .gitignore                     # Git ignore rules
+├── DESIGN.md                      # "The Harvest Ledger" design system guide
+├── index.html                     # HTML5 shell, preconnect fonts, JSON-LD schema
+├── package.json                   # Dependencies & build scripts
+├── tailwind.config.js             # Token extensions & font families
+├── tsconfig.json                  # Strict TypeScript configuration
+├── vercel.json                    # SPA rewrites & security headers
+└── vite.config.ts                 # Vite bundler configuration
+```
+
+---
+
+## 🎨 4. Design System Tokens (*The Harvest Ledger*)
+
+Documented fully in [`DESIGN.md`](./DESIGN.md):
+
+| Color Token | Hex Code | Functional Application |
+|---|---|---|
+| **Deep Evergreen** | `#0A2118` | Primary dark backdrops (Hero, Footer, Navigation) |
+| **Field Green** | `#17412E` | Primary button fill, active states, dark borders |
+| **Leaf Green** | `#326049` | Subdued green accents, domestic harvest curve |
+| **Cream Canvas** | `#F1EBDD` | Primary light background canvas across all pages |
+| **Deep Parchment** | `#E4D7BA` | Elevated cards, input fields, diagnostic panels |
+| **Primary Ink** | `#122017` | High-contrast editorial typography and headlines |
+| **Soft Ink** | `#405046` | Body text, captions, secondary descriptions |
+| **Antique Gold** | `#B99045` | Hairlines, numerals, route strokes, focus states |
+| **Muted Brick Red** | `#8F2D2D` | Form validation and error notices only |
+
+---
+
+## 🚀 5. Local Development & Build
+
+### Prerequisites
+- Node.js (v18+)
+- npm (v9+)
+
+### Installation
+```bash
+npm install
+```
+
+### Run Local Development Server
 ```bash
 npm run dev
 ```
 Accessible at [http://localhost:3000](http://localhost:3000).
 
-### Production Build
+### Build for Production
 ```bash
 npm run build
 ```
-Outputs optimized production bundle in `dist/` with strict TypeScript validation.
+Outputs optimized production bundle in `dist/` with zero TypeScript or lint errors.
 
 ### Production Preview
 ```bash
@@ -34,43 +168,23 @@ npm run preview
 
 ---
 
-## 3. Centralized Content Layer (`src/data/`)
+## 🔒 6. Security, Privacy & Integrity Standards
 
-All corporate facts, commodities, origins, leadership details, and contact coordinates are centralized in `src/data/` for straightforward client maintenance without touching UI components or CSS:
-
-| File | Content Scope |
-|---|---|
-| `src/data/company.ts` | Legal name, tagline, operating philosophy, address, emails, and group turnover |
-| `src/data/commodities.ts` | Diagnostic matrix for Rice, Pulses, Apples, Bananas, and Coconut |
-| `src/data/network.ts` | Domestic sourcing nodes and international import corridors |
-| `src/data/group.ts` | ₹228 Cr group ecosystem entities and descriptions |
-| `src/data/leadership.ts` | Board of Directors and governance principles |
-| `src/data/certifications.ts` | Statutory licensing architecture and dual-stage QC parameters |
-| `src/data/customers.ts` | Client sectors (Organised Retail, QSR & Café, Regional Hospitality) |
-| `src/data/navigation.ts` | Main navigation and footer anchor links |
-| `src/data/faq.ts` | Procurement FAQs and knowledge base |
-| `src/components/chatbot/assistantKnowledge.ts` | Domain-locked B2B assistant responses |
+- **Zero-Fabrication Rule**: No fake phone numbers, no placeholder GST/FSSAI certificates, and no unverified offices.
+- **Server-Side Email Handling**: Private email provider API keys (`RESEND_API_KEY`) are processed server-side via `/api/inquiry.ts`, never exposed in client JavaScript.
+- **Form Anti-Spam**: Hidden honeypot field (`company_website`) and 8-second client rate limiting.
+- **Headers in [`vercel.json`](./vercel.json)**: `nosniff`, `DENY` framing, `strict-origin-when-cross-origin`, `Permissions-Policy`, and HSTS.
 
 ---
 
-## 4. Contact Form Configuration
+## 📖 7. Additional Documentation
 
-The commercial inquiry form in `src/components/contact/RfpForm.tsx` supports:
-- Direct POST via Web3Forms, Formspree, or custom API endpoints using environment variables:
-  - `VITE_FORM_ENDPOINT` (e.g. `https://api.web3forms.com/submit` or custom endpoint)
-  - `VITE_FORM_ACCESS_KEY` (API access key)
-- Automatic fallback: when no API key is present in `.env`, the form formats a structured mailto link directed to `procurement@ttbagro.com`.
-- Integrated bot protection via a hidden honeypot field (`company_website`) and 8-second submission rate limiting.
-- Automatic commodity pre-selection via URL query parameters (e.g. `/contact?commodity=apples`).
+- [Detailed Technical Architecture (`docs/ARCHITECTURE.md`)](./docs/ARCHITECTURE.md)
+- [Corporate Fact Register & Pre-Launch Checklist (`docs/CONTENT_VERIFICATION.md`)](./docs/CONTENT_VERIFICATION.md)
+- [Photographic Asset Sources & Provenance (`docs/ASSET_SOURCES.md`)](./docs/ASSET_SOURCES.md)
+- [Production Deployment Guide (`docs/DEPLOYMENT.md`)](./docs/DEPLOYMENT.md)
+- [Design System Specification (`DESIGN.md`)](./DESIGN.md)
 
 ---
 
-## 5. Security & Deployment
-
-- **Security Headers**: Configured in `vercel.json` (`nosniff`, `DENY` framing, `strict-origin-when-cross-origin`, `Permissions-Policy`).
-- **No Fabricated Numbers**: Placeholder licenses are clearly labeled as provided upon commercial onboarding.
-- **Group Turnover Clarification**: ₹228 Cr is strictly presented as the combined group ecosystem turnover across sister entities.
-
----
-
-© TTB Agro India Private Limited.
+© TTB Agro India Private Limited. All rights reserved.

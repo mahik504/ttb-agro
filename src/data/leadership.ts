@@ -6,7 +6,7 @@ export const leadershipData: LeadershipMember[] = [
     name: 'Mr. Prakash Patil',
     title: 'Director',
     focusArea: 'Board of Directors',
-    summary: 'Directorship of TTB Agro India Private Limited, leading strategic agricultural sourcing and group governance.',
+    summary: 'Directorship of TTB Agro India Private Limited, leading strategic agricultural sourcing and corporate governance.',
     verifiedDirectorship: true
   },
   {
@@ -26,10 +26,10 @@ export const governancePrinciples = [
   },
   {
     title: 'Customer-First Quality',
-    description: 'Serving retail chains, hospitality networks, and institutional buyers with guaranteed consistent quality and volume.'
+    description: 'Serving retail chains, hospitality networks, and institutional buyers with consistent quality and reliable volume allocations.'
   },
   {
     title: 'Supply Continuity',
-    description: 'Operating dedicated import channels and multi-state procurement grids to neutralize seasonal price volatility and guarantee availability.'
+    description: 'Leveraging dedicated import channels and multi-state procurement networks to stabilize seasonal availability gaps for retail partners.'
   }
 ];

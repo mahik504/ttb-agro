@@ -1,9 +1,4 @@
-export interface FAQItem {
-  id: string;
-  question: string;
-  answer: string;
-  category: 'Overview' | 'Commodities' | 'Supply Chain' | 'Group Scale' | 'Procurement';
-}
+import { FAQItem } from '../types';
 
 export const faqsData: FAQItem[] = [
   {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
 import { SectionHeading } from '../components/ui/SectionHeading';
-import { qcInspectionProtocols } from '../data/certifications';
+import { qcInspectionProtocols } from '../data/qcProtocols';
 import { CheckCircle2, ShieldCheck } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 

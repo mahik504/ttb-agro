@@ -23,7 +23,7 @@ export interface NetworkNode {
   name: string;
   region: string;
   type: 'Domestic Origin' | 'Global Import Channel' | 'Operations Hub';
-  coordinates: { x: number; y: number }; // Percentage positions for interactive SVG/Canvas map
+  coordinates: { x: number; y: number };
   commodities: string[];
   role: string;
   details: string;
@@ -49,18 +49,6 @@ export interface LeadershipMember {
   verifiedDirectorship: boolean;
 }
 
-export interface CertificationDoc {
-  id: string;
-  title: string;
-  category: 'Corporate' | 'Food Safety & Standards' | 'Trade & Export' | 'Quality Management';
-  issuingAuthority: string;
-  registrationNumberPlaceholder: string;
-  status: 'Verified Registration' | 'Active Group License' | 'Pending Verification' | 'Document on Request';
-  description: string;
-  verificationScope: string;
-  documentType: 'PDF' | 'Certificate';
-}
-
 export interface CustomerSegment {
   id: string;
   title: string;
@@ -78,4 +66,11 @@ export interface SupplyChainStep {
   tacticalOperations: string[];
   qcGate: string;
   iconName: string;
+}
+
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  category: 'Overview' | 'Commodities' | 'Supply Chain' | 'Group Scale' | 'Procurement';
 }
