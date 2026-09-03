@@ -1,82 +1,95 @@
 import React from 'react';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Globe, ShieldCheck, TrendingUp } from 'lucide-react';
 import { Button } from '../ui/Button';
-import { companyInfo } from '../../data/company';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="relative bg-[#0A2118] text-[#F1EBDD] overflow-hidden border-b border-[#B99045]/20 min-h-[88vh] flex items-center">
-      {/* Background Image Layer (55–65% Visual Presence with Editorial Mask) */}
+    <section className="relative min-h-[92vh] flex items-center bg-brand-950 text-surface overflow-hidden pt-20">
+      {/* Background Video / Image with strict overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero.jpg"
-          alt="Agricultural sourcing and fresh produce aggregation"
-          className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity scale-105"
+          src="https://images.unsplash.com/photo-1595841696650-6f2048f32811?auto=format&fit=crop&q=80&w=2000"
+          alt="Modern Agricultural Logistics"
+          className="w-full h-full object-cover opacity-30"
         />
-        {/* Editorial Linear & Radial Dark Overlays for Pristine Legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A2118] via-[#0A2118]/85 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A2118] via-transparent to-[#0A2118]/60"></div>
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#B99045_1px,transparent_1px)] [background-size:32px_32px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/90 to-brand-900/40"></div>
       </div>
 
-      {/* Hero Content Container */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative z-10 w-full">
-        <div className="max-w-2xl space-y-6 sm:space-y-7">
-          
-          {/* Top Gold Kicker */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#17412E]/70 border border-[#B99045]/30">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B99045]"></span>
-            <span className="text-[11px] font-mono font-medium tracking-[0.18em] uppercase text-[#B99045]">
-              {companyInfo.legalName}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+        
+        {/* Left Column: Typographic Narrative */}
+        <div className="w-full lg:w-3/5 space-y-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full dark-glass-panel"
+          >
+            <ShieldCheck className="w-4 h-4 text-accent" />
+            <span className="text-xs font-mono font-medium tracking-widest uppercase text-surface-muted">
+              TTB Agro India Pvt. Ltd.
             </span>
-          </div>
+          </motion.div>
 
-          {/* Main H1 in Fraunces */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-medium tracking-tight leading-[1.12] text-[#F1EBDD]">
-            Resilient supply chains from origin growers to organised retail.
-          </h1>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            className="text-5xl sm:text-6xl lg:text-[5.5rem] font-display font-semibold tracking-tighter leading-[1.05] text-surface"
+          >
+            The New Standard in <span className="text-accent">Agri-Sourcing.</span>
+          </motion.h1>
 
-          {/* PDF-Grounded Narrative Subtitle */}
-          <p className="text-sm sm:text-base lg:text-lg text-[#E4D7BA]/85 leading-relaxed">
-            Sourcing with integrity across India and strategic overseas import channels, delivering with precision to retail supermarket chains, café networks, and commercial food-service buyers.
-          </p>
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="text-lg sm:text-xl text-brand-200 leading-relaxed max-w-2xl font-light"
+          >
+            We orchestrate high-volume, precision-graded agricultural supply chains from global origins directly to India's leading organised retail and food-service networks.
+          </motion.p>
 
-          {/* Primary CTA & Secondary Link */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-            <Button href="/contact" variant="primary" size="lg" icon={<ArrowUpRight className="w-4 h-4 text-[#B99045]" />}>
-              Discuss procurement requirements
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-6 pt-4"
+          >
+            <Button href="/contact" variant="primary" size="lg" className="bg-brand-600 hover:bg-brand-500 text-white rounded-none px-8 py-4 font-display font-medium tracking-wide flex items-center justify-center gap-3 transition-colors">
+              Discuss Procurement <ArrowUpRight className="w-5 h-5" />
             </Button>
-            <a
-              href="/supply-chain"
-              className="text-xs sm:text-sm text-[#E4D7BA]/80 hover:text-[#B99045] transition-colors inline-flex items-center justify-center gap-1.5 font-medium py-2 sm:py-0"
-            >
-              <span>Explore our supply journey</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+            <a href="/supply-chain" className="text-sm text-surface-muted hover:text-accent transition-colors flex items-center justify-center gap-3 font-mono uppercase tracking-widest">
+              Explore Network
             </a>
-          </div>
+          </motion.div>
+        </div>
 
-          {/* Gold Route Journey Trace */}
-          <div className="pt-6 sm:pt-8">
-            <div className="w-full border-t border-[#B99045]/30 pt-3">
-              <div className="grid grid-cols-4 text-center sm:text-left text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#B99045]">
-                <span>01. Origin</span>
-                <span>02. Global Import</span>
-                <span>03. Dual-Stage QC</span>
-                <span>04. Retail Dispatch</span>
-              </div>
+        {/* Right Column: Architectural Data Visualization */}
+        <motion.div 
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+          className="w-full lg:w-2/5 hidden md:block"
+        >
+          <div className="grid grid-cols-1 gap-6">
+            <div className="dark-glass-panel p-8 hover-lift">
+              <Globe className="w-8 h-8 text-accent mb-6" />
+              <div className="text-sm font-mono text-brand-300 mb-2 uppercase tracking-widest">Global Reach</div>
+              <div className="text-4xl font-display font-semibold text-surface">15+</div>
+              <div className="text-sm text-brand-200 mt-2">Sourcing Geographies</div>
+            </div>
+            
+            <div className="dark-glass-panel p-8 hover-lift relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-600/20 rounded-full blur-3xl"></div>
+              <TrendingUp className="w-8 h-8 text-accent mb-6 relative z-10" />
+              <div className="text-sm font-mono text-brand-300 mb-2 uppercase tracking-widest relative z-10">Annual Volume</div>
+              <div className="text-4xl font-display font-semibold text-surface relative z-10">₹228 Cr</div>
+              <div className="text-sm text-brand-200 mt-2 relative z-10">Combined Group Turnover</div>
             </div>
           </div>
+        </motion.div>
 
-          {/* Restrained Group Metric Strip */}
-          <div className="pt-2 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs text-[#E4D7BA]/60 font-mono">
-            <span>₹228 Cr Combined Group Turnover</span>
-            <span className="text-[#B99045]/40">•</span>
-            <span>Navi Mumbai Operations Hub</span>
-            <span className="text-[#B99045]/40">•</span>
-            <span>Rice • Pulses • Apples • Bananas • Coconut</span>
-          </div>
-
-        </div>
       </div>
     </section>
   );
