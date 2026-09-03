@@ -10,94 +10,102 @@ export const CommoditiesPage: React.FC = () => {
   const freshProduce = commoditiesData.filter((c) => c.category === 'Fresh Produce');
 
   return (
-    <div className="bg-[#F1EBDD] min-h-screen pb-20">
+    <div className="bg-cream-100 min-h-screen pb-24">
       {/* Page Header */}
       <PageHeader
-        badgeText="COMMODITY PORTFOLIO"
-        title="What We Source:"
+        badgeText="COMMODITY SPECIFICATIONS • 5 CORE LINES (SLIDE 6)"
+        title="Verified Sourcing Portfolio:"
         highlightText="Staples &amp; Fresh Produce."
-        description="Our core diagnostic sourcing matrix covering bulk rice and pulses, alongside dedicated apple, banana, and coconut supply pipelines."
+        description="Our core commercial diagnostic sourcing matrix covering bulk rice and pulses, alongside dedicated apple, banana, and coconut cold-chain pipelines."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Commodities' }
         ]}
       />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-16 space-y-20">
         
         {/* Category 1: Staples (Rice & Pulses) */}
-        <div id="staples" className="space-y-6">
+        <div id="staples" className="space-y-8">
           <SectionHeading
-            badgeText="CATEGORY 01"
-            title="Staples"
-            highlightText="â€” Rice &amp; Pulses"
-            description="Procured through direct local aggregation in Tamil Nadu and general trading across major pan-India mandi corridors."
+            badgeText="CATEGORY 01 • STAPLES"
+            title="Bulk Grain &amp; Pulses"
+            highlightText="— Direct Mandi &amp; Farm Sourcing"
+            description="Procured through direct local farm aggregation in Tamil Nadu and general trading across major pan-India mandi corridors with consistent grade sorting."
             align="left"
-            className="mb-6"
+            className="mb-8"
           />
 
-          <div className="space-y-8">
+          <div className="space-y-10">
             {staples.map((item) => (
               <div
                 key={item.id}
                 id={item.id}
-                className="rounded-md bg-[#E4D7BA] border border-[#122017]/15 overflow-hidden shadow-subtle scroll-mt-24 grid grid-cols-1 lg:grid-cols-12 gap-0"
+                className="bg-parchment-100 border border-ink-900/15 overflow-hidden shadow-subtle grid grid-cols-1 lg:grid-cols-12 gap-0"
               >
                 {/* Product Photo (5 Cols) */}
-                <div className="lg:col-span-5 h-64 lg:h-auto relative bg-[#0A2118] overflow-hidden">
+                <div className="lg:col-span-5 h-72 lg:h-auto relative bg-evergreen-950 overflow-hidden">
                   <img
                     src={item.imageUrl}
                     alt={`${item.name} wholesale commodity`}
                     className="w-full h-full object-cover object-center"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2118]/70 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-[#F1EBDD]">
-                    <span className="text-[10px] font-mono uppercase text-[#B99045] tracking-widest font-bold">
-                      {item.category} â€¢ {item.procurementStrategy}
+                  <div className="absolute inset-0 bg-gradient-to-t from-evergreen-950/90 via-transparent to-transparent" />
+                  <div className="absolute bottom-5 left-6 right-6 text-cream-100">
+                    <span className="text-[10px] font-mono uppercase text-gold-500 tracking-widest font-bold block">
+                      {item.category} • {item.procurementStrategy}
                     </span>
-                    <h3 className="text-2xl font-display font-medium text-[#F1EBDD]">
+                    <h3 className="text-2xl sm:text-3xl font-display font-medium text-cream-100 mt-1">
                       {item.name}
                     </h3>
                   </div>
                 </div>
 
                 {/* Details (7 Cols) */}
-                <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-5">
-                  <div className="space-y-4">
-                    <p className="text-sm text-[#405046] leading-relaxed">
+                <div className="lg:col-span-7 p-7 sm:p-9 flex flex-col justify-between space-y-6">
+                  <div className="space-y-5">
+                    <p className="text-sm sm:text-base text-ink-soft leading-relaxed font-sans">
                       {item.description}
                     </p>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                      <div className="p-3 rounded bg-[#F1EBDD] border border-[#122017]/10 text-xs">
-                        <span className="text-[10px] font-mono uppercase font-bold text-[#63756A] block">Origin Regions:</span>
-                        <strong className="text-[#122017] font-medium block mt-0.5">{item.origins.join(', ')}</strong>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                      <div className="p-4 bg-cream-100 border border-ink-900/10 text-xs">
+                        <span className="text-[10px] font-mono uppercase font-bold text-ink-soft block">
+                          Origin Regions:
+                        </span>
+                        <strong className="text-ink-900 font-medium block mt-1">
+                          {item.origins.join(', ')}
+                        </strong>
                       </div>
-                      <div className="p-3 rounded bg-[#F1EBDD] border border-[#122017]/10 text-xs">
-                        <span className="text-[10px] font-mono uppercase font-bold text-[#63756A] block">Key Varieties &amp; Grades:</span>
-                        <strong className="text-[#122017] font-medium block mt-0.5">{item.gradeVariants.join(', ')}</strong>
+                      <div className="p-4 bg-cream-100 border border-ink-900/10 text-xs">
+                        <span className="text-[10px] font-mono uppercase font-bold text-ink-soft block">
+                          Key Varieties &amp; Grades:
+                        </span>
+                        <strong className="text-ink-900 font-medium block mt-1">
+                          {item.gradeVariants.join(', ')}
+                        </strong>
                       </div>
                     </div>
 
-                    <div className="space-y-1.5 pt-1">
+                    <div className="space-y-2 pt-1">
                       {item.b2bHighlights.map((hl, idx) => (
-                        <div key={idx} className="flex items-start gap-2 text-xs text-[#405046]">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#17412E] shrink-0 mt-0.5" />
+                        <div key={idx} className="flex items-start gap-2.5 text-xs text-ink-900">
+                          <CheckCircle2 className="w-4 h-4 text-field-900 shrink-0 mt-0.5" />
                           <span>{hl}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-[#122017]/10 flex flex-wrap items-center justify-between gap-3">
-                    <span className="text-xs text-[#63756A] font-mono">
-                      Confirmed per purchase order
+                  <div className="pt-5 border-t border-ink-900/10 flex flex-wrap items-center justify-between gap-4">
+                    <span className="text-xs text-ink-soft font-mono">
+                      Confirmed per commercial purchase order
                     </span>
                     <Button
                       href={`/contact?commodity=${item.id}`}
                       variant="primary"
                       size="sm"
-                      icon={<ArrowRight className="w-3.5 h-3.5 text-[#B99045]" />}
+                      icon={<ArrowRight className="w-3.5 h-3.5 text-gold-500" />}
                     >
                       Discuss {item.name} Requirements
                     </Button>
@@ -108,79 +116,87 @@ export const CommoditiesPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Category 2: Fresh Produce (Apples, Bananas, Coconut) */}
-        <div id="fresh-produce" className="space-y-6 pt-8 border-t border-[#122017]/10">
+        {/* Category 2: Fresh Produce */}
+        <div id="fresh-produce" className="space-y-8 pt-10 border-t border-ink-900/10">
           <SectionHeading
-            badgeText="CATEGORY 02"
-            title="Fresh Produce"
-            highlightText="â€” Apples, Bananas &amp; Coconut"
-            description="Combining domestic orchard and farm-gate aggregation with dedicated Eurasian import pipelines and dedicated coconut processing."
+            badgeText="CATEGORY 02 • FRESH PRODUCE"
+            title="Cold-Chain Perishables"
+            highlightText="— Apples, Bananas &amp; Coconut"
+            description="Combining domestic orchard aggregation in HP, Kashmir, and the southern belts with dedicated Eurasian import pipelines from Iran and Turkey."
             align="left"
-            className="mb-6"
+            className="mb-8"
           />
 
-          <div className="space-y-8">
+          <div className="space-y-10">
             {freshProduce.map((item) => (
               <div
                 key={item.id}
                 id={item.id}
-                className="rounded-md bg-[#E4D7BA] border border-[#122017]/15 overflow-hidden shadow-subtle scroll-mt-24 grid grid-cols-1 lg:grid-cols-12 gap-0"
+                className="bg-parchment-100 border border-ink-900/15 overflow-hidden shadow-subtle grid grid-cols-1 lg:grid-cols-12 gap-0"
               >
                 {/* Product Photo (5 Cols) */}
-                <div className="lg:col-span-5 h-64 lg:h-auto relative bg-[#0A2118] overflow-hidden">
+                <div className="lg:col-span-5 h-72 lg:h-auto relative bg-evergreen-950 overflow-hidden">
                   <img
                     src={item.imageUrl}
                     alt={`${item.name} produce`}
                     className="w-full h-full object-cover object-center"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2118]/70 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-[#F1EBDD]">
-                    <span className="text-[10px] font-mono uppercase text-[#B99045] tracking-widest font-bold">
-                      {item.category} â€¢ {item.procurementStrategy}
+                  <div className="absolute inset-0 bg-gradient-to-t from-evergreen-950/90 via-transparent to-transparent" />
+                  <div className="absolute bottom-5 left-6 right-6 text-cream-100">
+                    <span className="text-[10px] font-mono uppercase text-gold-500 tracking-widest font-bold block">
+                      {item.category} • {item.procurementStrategy}
                     </span>
-                    <h3 className="text-2xl font-display font-medium text-[#F1EBDD]">
+                    <h3 className="text-2xl sm:text-3xl font-display font-medium text-cream-100 mt-1">
                       {item.name}
                     </h3>
                   </div>
                 </div>
 
                 {/* Details (7 Cols) */}
-                <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-5">
-                  <div className="space-y-4">
-                    <p className="text-sm text-[#405046] leading-relaxed">
+                <div className="lg:col-span-7 p-7 sm:p-9 flex flex-col justify-between space-y-6">
+                  <div className="space-y-5">
+                    <p className="text-sm sm:text-base text-ink-soft leading-relaxed font-sans">
                       {item.description}
                     </p>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                      <div className="p-3 rounded bg-[#F1EBDD] border border-[#122017]/10 text-xs">
-                        <span className="text-[10px] font-mono uppercase font-bold text-[#63756A] block">Origin Regions:</span>
-                        <strong className="text-[#122017] font-medium block mt-0.5">{item.origins.join(', ')}</strong>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                      <div className="p-4 bg-cream-100 border border-ink-900/10 text-xs">
+                        <span className="text-[10px] font-mono uppercase font-bold text-ink-soft block">
+                          Origin Regions:
+                        </span>
+                        <strong className="text-ink-900 font-medium block mt-1">
+                          {item.origins.join(', ')}
+                        </strong>
                       </div>
-                      <div className="p-3 rounded bg-[#F1EBDD] border border-[#122017]/10 text-xs">
-                        <span className="text-[10px] font-mono uppercase font-bold text-[#63756A] block">Key Varieties &amp; Grades:</span>
-                        <strong className="text-[#122017] font-medium block mt-0.5">{item.gradeVariants.join(', ')}</strong>
+                      <div className="p-4 bg-cream-100 border border-ink-900/10 text-xs">
+                        <span className="text-[10px] font-mono uppercase font-bold text-ink-soft block">
+                          Key Varieties &amp; Grades:
+                        </span>
+                        <strong className="text-ink-900 font-medium block mt-1">
+                          {item.gradeVariants.join(', ')}
+                        </strong>
                       </div>
                     </div>
 
-                    <div className="space-y-1.5 pt-1">
+                    <div className="space-y-2 pt-1">
                       {item.b2bHighlights.map((hl, idx) => (
-                        <div key={idx} className="flex items-start gap-2 text-xs text-[#405046]">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#17412E] shrink-0 mt-0.5" />
+                        <div key={idx} className="flex items-start gap-2.5 text-xs text-ink-900">
+                          <CheckCircle2 className="w-4 h-4 text-field-900 shrink-0 mt-0.5" />
                           <span>{hl}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-[#122017]/10 flex flex-wrap items-center justify-between gap-3">
-                    <span className="text-xs text-[#63756A] font-mono">
-                      {item.keySpecs.seasonalPeak}
+                  <div className="pt-5 border-t border-ink-900/10 flex flex-wrap items-center justify-between gap-4">
+                    <span className="text-xs text-gold-600 font-mono font-medium">
+                      Seasonal Window: {item.keySpecs.seasonalPeak}
                     </span>
                     <Button
                       href={`/contact?commodity=${item.id}`}
                       variant="primary"
                       size="sm"
-                      icon={<ArrowRight className="w-3.5 h-3.5 text-[#B99045]" />}
+                      icon={<ArrowRight className="w-3.5 h-3.5 text-gold-500" />}
                     >
                       Discuss {item.name} Requirements
                     </Button>

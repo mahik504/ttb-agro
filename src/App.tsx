@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
@@ -29,12 +29,12 @@ export function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-[#F1EBDD] text-[#122017] selection:bg-[#17412E] selection:text-[#F1EBDD]">
+      <div className="flex flex-col min-h-screen bg-cream-100 text-ink-900 selection:bg-field-900 selection:text-cream-100 font-sans">
         {/* Main Navigation */}
         <Navbar />
 
         {/* Content Viewport */}
-        <main className="flex-1">
+        <main className="flex-1 pt-20">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -42,6 +42,7 @@ export function App() {
             <Route path="/supply-chain" element={<SupplyChainPage />} />
             <Route path="/network" element={<NetworkPage />} />
             <Route path="/group" element={<GroupPage />} />
+            <Route path="/compliance" element={<CompliancePage />} />
             <Route path="/quality-compliance" element={<CompliancePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

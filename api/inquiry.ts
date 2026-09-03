@@ -1,6 +1,15 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+﻿// Server-side inquiry submission handler
+interface VercelRequest {
+  method?: string;
+  body?: any;
+}
 
-// Server-side inquiry submission handler
+interface VercelResponse {
+  status: (code: number) => {
+    json: (body: any) => void;
+  };
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -30,12 +39,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Sanitize & length limit
     const cleanName = String(fullName).trim().slice(0, 100);
-    const cleanCompany = String(companyName).trim().slice(100);
+    const cleanCompany = String(companyName).trim().slice(0, 100);
     const cleanEmail = String(workEmail).trim().slice(0, 100);
     const cleanPhone = String(phoneNumber).trim().slice(0, 30);
     const cleanMessage = String(message || '').trim().slice(0, 1000);
 
-    // 3. Check for server-side email dispatch secret (e.g. RESEND_API_KEY or SENDGRID_API_KEY)
+    // 3. Check for server-side email dispatch secret (e.g. RESEND_API_KEY)
     const resendApiKey = process.env.RESEND_API_KEY;
     const recipientEmail = process.env.INQUIRY_RECIPIENT_EMAIL || 'procurement@ttbagro.com';
 
